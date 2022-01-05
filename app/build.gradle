@@ -31,6 +31,10 @@ android {
     }
     compileSdkVersion 31
     buildToolsVersion '30.0.2'
+
+    aaptOptions {
+        cruncherEnabled = false
+    }
 }
 
 dependencies {
