@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/chamc/AndroidStudioProjects/CafeAppProject/app/src/main/res/layout/fragment_login.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/chamc/AndroidStudioProjects/CafeAppProject/app/src/main/res/layout/fragment_login.xml" value="0.2" />
+        <entry key="..\:/Users/chamc/AndroidStudioProjects/CafeAppProject/app/src/main/res/layout/fragment_membership.xml" value="0.1296875" />
+        <entry key="..\:/Users/chamc/AndroidStudioProjects/CafeAppProject/app/src/main/res/layout/fragment_menu.xml" value="0.1296875" />
+        <entry key="..\:/Users/chamc/AndroidStudioProjects/CafeAppProject/app/src/main/res/layout/fragment_notice.xml" value="0.1296875" />
+        <entry key="..\:/Users/chamc/AndroidStudioProjects/CafeAppProject/app/src/main/res/layout/fragment_profile.xml" value="0.1296875" />
+        <entry key="..\:/Users/chamc/AndroidStudioProjects/CafeAppProject/app/src/main/res/layout/fragment_setting.xml" value="0.1296875" />
+        <entry key="..\:/Users/chamc/AndroidStudioProjects/CafeAppProject/app/src/main/res/layout/fragment_sign_up.xml" value="0.1296875" />
       </map>
     </option>
   </component>
