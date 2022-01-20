@@ -8,7 +8,9 @@
 <p>
   &emsp;btn_    : 버튼<br>
   &emsp;text_   : 텍스트<br>
-  &emsp;image_  : 이미지
+  &emsp;image_  : 이미지<br>
+  &emsp;id_타입_위치_이름 : xml 아이디<br>
+  &emsp;&emsp;ex) id_text_login_email -> fragment_login.xml의 login email text id
 </p>
 
 ---
