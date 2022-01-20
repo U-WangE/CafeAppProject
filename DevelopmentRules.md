@@ -4,7 +4,7 @@
 ---
 
 <h2>Code Variable Name Rules</h2>
-<h3>&emsp;타입_이름_상세 [이름은 최대한 관련 있게 작성]</h3>
+<h4>&emsp;타입_이름_상세 [이름은 최대한 관련 있게 작성]</h4>
 <p>
   &emsp;btn_    : 버튼<br>
   &emsp;text_   : 텍스트<br>
@@ -14,7 +14,7 @@
 ---
 
 <h2>Git Commit Message 규칙</h2>
-<h3>&emsp;<타입> 내용</h3>
+<h4>&emsp;<타입> 내용</h4>
 <p>
   &emsp;init     : 초기화<br>
   &emsp;add      : 기능 추가<br>
