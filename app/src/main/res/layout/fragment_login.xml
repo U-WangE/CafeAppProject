@@ -27,27 +27,27 @@
             android:layout_marginBottom="50dp" />
 
         <EditText
-            android:id="@+id/login_email"
+            android:id="@+id/id_txt_login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="이메일" />
 
         <EditText
-            android:id="@+id/login_password"
+            android:id="@+id/id_txt_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="비밀번호" />
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/id_btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="로그인" />
 
         <TextView
-            android:id="@+id/btn_signup"
+            android:id="@+id/id_btn_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

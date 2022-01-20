@@ -27,7 +27,7 @@ class LoginFragment : Fragment() {
 
         // Navigation 화면 전환
         // 화면 전환시 회원인지 파악 필요
-        binding.btnSignup.setOnClickListener {
+        binding.idBtnLogin.setOnClickListener {
             it.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
         }
         // 회원 정보 없을 시 Toast Message
