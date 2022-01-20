@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.findNavController
 import com.example.cafeappproject.R
 import com.example.cafeappproject.databinding.FragmentLoginBinding
 
@@ -22,7 +24,14 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         mBinding = FragmentLoginBinding.inflate(inflater, container, false)
-        binding.btnSignup
+
+        // Navigation 화면 전환
+        // 화면 전환시 회원인지 파악 필요
+        binding.btnSignup.setOnClickListener {
+            it.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+        }
+        // 회원 정보 없을 시 Toast Message
+        Toast.makeText(activity, R.string.non_registered, Toast.LENGTH_SHORT).show()
         return binding.root
     }
 
