@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.LoginFragment">
+    tools:context=".fragment.LoginFragment"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -30,14 +31,20 @@
             android:id="@+id/id_txt_login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="이메일" />
+            android:hint="이메일"
+            android:backgroundTint="@color/gray"
+            android:textColorHint="@color/gray"
+            android:textColor="@color/black"/>
 
         <EditText
             android:id="@+id/id_txt_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="비밀번호" />
+            android:hint="비밀번호"
+            android:backgroundTint="@color/gray"
+            android:textColorHint="@color/gray"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/id_btn_login"
@@ -52,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="회원 가입"
+            android:textColor="@color/gray"
             android:layout_gravity="center|right" />
 
     </LinearLayout>
