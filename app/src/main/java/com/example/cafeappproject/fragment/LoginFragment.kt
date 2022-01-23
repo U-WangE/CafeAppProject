@@ -26,12 +26,23 @@ class LoginFragment : Fragment() {
         mBinding = FragmentLoginBinding.inflate(inflater, container, false)
 
         // Navigation 화면 전환
+        // Login -> Main 화면 전환
         // 화면 전환시 회원인지 파악 필요
+
         binding.idBtnLogin.setOnClickListener {
             it.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
         }
+
         // 회원 정보 없을 시 Toast Message
         Toast.makeText(activity, R.string.non_registered, Toast.LENGTH_SHORT).show()
+
+        // Login -> Signup 화면 전환
+        binding.idBtnSignup.setOnClickListener {
+            it.findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
+        }
+
+
+
         return binding.root
     }
 
