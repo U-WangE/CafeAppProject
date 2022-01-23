@@ -6,4 +6,5 @@
     <string name="profile">profile</string>
     <string name="setting">setting</string>
     <string name="non_registered">일치하는 정보가 없습니다.\n이메일,비밀번호를 확인해 주세요.</string>
+    <string name="non_input">회원 정보를 입력해 주세요.</string>
 </resources>
