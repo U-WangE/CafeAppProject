@@ -16,7 +16,7 @@
 ---
 
 <h2>Git Commit Message 규칙</h2>
-<h4>&emsp;<타입> 내용</h4>
+<h4>&emsp;[타입] 내용</h4>
 <p>
   &emsp;init     : 초기화<br>
   &emsp;add      : 기능 추가<br>
