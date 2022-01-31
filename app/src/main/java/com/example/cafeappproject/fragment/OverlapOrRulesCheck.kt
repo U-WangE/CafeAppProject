@@ -4,7 +4,7 @@ import android.util.Log
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 
-class OverlapCheck {
+class OverlapOrRulesCheck {
 
     private val mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -28,12 +28,6 @@ class OverlapCheck {
     private fun IsOverlap(text: String, type: String): Boolean {
         when(type) {
             //"nickname" ->
-        }
-
-        fun onDataChange(dataSnapshot: DataSnapshot?) {
-                //if(dataSnapshot.getValue() != null) {
-
-                //}
         }
 
         return false

@@ -20,7 +20,7 @@ class SignUpFragment : Fragment() {
 
     private var user = User(null, null, null)
 
-    private var overlapCheck = OverlapCheck()
+    private var overlapOrRulesCheck = OverlapOrRulesCheck()
 
 
     override fun onCreateView(
@@ -33,7 +33,7 @@ class SignUpFragment : Fragment() {
 
         // NicknameCheck
         binding.idBtnSignupNicknamecheck.setOnClickListener {
-            when(overlapCheck.NicknameRulesCheck(binding.idTxtSignupNickname.text.toString())) {
+            when(overlapOrRulesCheck.NicknameRulesCheck(binding.idTxtSignupNickname.text.toString())) {
                 "CurrectInput" -> Toast.makeText(activity, R.string.correct_input, Toast.LENGTH_SHORT).show()
                 "Overlap" -> Toast.makeText(activity, R.string.overlap_input, Toast.LENGTH_SHORT).show()
                 "WrongInput" -> Toast.makeText(activity, R.string.invalid_input, Toast.LENGTH_SHORT).show()
@@ -42,7 +42,7 @@ class SignUpFragment : Fragment() {
         }
 
         binding.idBtnSignup.setOnClickListener {
-            when(overlapCheck.EmailRulesCheck(binding.idTxtSignupEmail.text.toString())) {
+            when(overlapOrRulesCheck.EmailRulesCheck(binding.idTxtSignupEmail.text.toString())) {
             }
         }
 
