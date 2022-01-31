@@ -7,7 +7,7 @@
     <string name="setting">setting</string>
     <string name="non_registered">일치하는 정보가 없습니다.\n이메일,비밀번호를 확인해 주세요.</string>
     <string name="non_input">회원 정보를 입력해 주세요.</string>
-    <string name="invalid_input">올바르지 않은 입력 입니다.</string>
+    <string name="invalid_input">올바르지 않은 입력 입니다. (숫자, 영어, 한국어, _, - 사용 가능)</string>
     <string name="correct_input">사용 가능 합니다.</string>
-    <string name="overlap_input">사용 가능 합니다.</string>
+    <string name="overlap_input">중복된 닉네임 입니다.</string>
 </resources>
