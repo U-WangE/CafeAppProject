@@ -35,7 +35,7 @@ class SignUpFragment : Fragment() {
         binding.idBtnSignupNicknamecheck.setOnClickListener {
             when(overlapOrRulesCheck.NicknameRulesCheck(binding.idTxtSignupNickname.text.toString())) {
                 "CurrectInput" -> Toast.makeText(activity, R.string.correct_input, Toast.LENGTH_SHORT).show()
-                "Overlap" -> Toast.makeText(activity, R.string.overlap_input, Toast.LENGTH_SHORT).show()
+                "OverlapInput" -> Toast.makeText(activity, R.string.overlap_input, Toast.LENGTH_SHORT).show()
                 "WrongInput" -> Toast.makeText(activity, R.string.invalid_input, Toast.LENGTH_SHORT).show()
                 else -> Toast.makeText(activity, R.string.non_input, Toast.LENGTH_SHORT).show()
             }

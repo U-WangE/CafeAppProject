@@ -15,7 +15,7 @@ class OverlapOrRulesCheck {
 
         if(nickname.isNullOrEmpty()) return "NullOrEmpty"
         else if(!exp.matches(nickname)) return "WrongInput"
-        else if(!IsOverlap(nickname, "nickname")) return "CurrectInput" else return "Overlap" // database 에서 닉네임 가져와 중복 검사
+        else if(!IsOverlap(nickname, "nickname")) return "CurrectInput" else return "OverlapInput" // database 에서 닉네임 가져와 중복 검사
     }
 
     public fun EmailRulesCheck(email: String): String {
@@ -25,7 +25,7 @@ class OverlapOrRulesCheck {
 
         if(email.isNullOrEmpty()) return "NullOrEmpty"
         else if(!exp.matches(email)) return "WrongInput"
-        else if(!IsOverlap(email, "email")) return "CurrectInput" else return "Overlap" // database 에서 이메일 가져와 중복 검사
+        else if(!IsOverlap(email, "email")) return "CurrectInput" else return "OverlapInput" // database 에서 이메일 가져와 중복 검사
     }
 
     // cloud firestore  내의 중복 값 확인 (x realtime database)
