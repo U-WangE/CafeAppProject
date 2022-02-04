@@ -1,7 +1,9 @@
 package com.example.cafeappproject.fragment
 
+import android.app.PendingIntent.getActivity
 import android.service.autofill.UserData
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.FirebaseOptions
 import com.google.firebase.database.*
 import com.google.firebase.firestore.ktx.firestore
@@ -9,7 +11,7 @@ import com.google.firebase.ktx.Firebase
 
 class OverlapOrRulesCheck {
     val mDatabase = Firebase.firestore
-    
+
     public fun NicknameRulesCheck(nickname: String?) : String {
         val exp = Regex("^[가-힣ㄱ-ㅎa-zA-Z0-9._ -]{2,}\$")  // password 정규식(숫자, 영어, 한국어와 언더스코어) 허용
 
@@ -37,13 +39,18 @@ class OverlapOrRulesCheck {
             .addOnSuccessListener { result ->
                 for(document in result) {
                     if(document.data.getValue(type).equals(text))  // 중복 값 판별
+                    {
+                        Log.d("중복 값 => ", "이거 : " + text)
                         isOverlap = true
+                    }
                 }
             }
             .addOnFailureListener { exception ->
-                Log.w("Overlap => ", "Error getting Overlap", exception)
+                Log.e("Overlap => ", "Error getting Overlap", exception)
             }
 
+        Log.d("Overlap 값 => ", "이거 : " + isOverlap)   // firebase 검사하는 시간동안 딜레이 발생으로 중복 검사 결과 isOverlap에 저장 안됨
+        //https://todaycode.tistory.com/10
         return isOverlap
     }
 }
