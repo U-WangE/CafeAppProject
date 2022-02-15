@@ -31,7 +31,7 @@ class OverlapOrRulesCheck {
     }
 
 // Nickname
-    // Nickname 유효성 검사
+    // Nickname 유효성
     fun NicknameRulesCheck(context: Context, nickname: String?) {
         val exp = Regex("^[가-힣ㄱ-ㅎa-zA-Z0-9._-]{2,}\$")  // nickname 정규식(숫자, 영어, 한국어와 언더스코어)
 
