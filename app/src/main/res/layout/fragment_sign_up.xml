@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="-5dp"
             android:text="로그인 / 본인 확인 이메일"
-            android:textColor="@color/red"
+            android:textColor="@color/darkred"
             android:layout_gravity="end"/>
 
         <EditText
@@ -78,15 +78,15 @@
             android:hint="비밀번호"
             android:backgroundTint="@color/gray"
             android:textColorHint="@color/gray"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/id_subtxt_signup_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-5dp"
-            android:text="비밀번호를 입력해 주세요.        \n(문자, 숫자, 특수문자 포함)"
-            android:textColor="@color/red"
+            android:text="비밀번호를 입력해 주세요.\n(영어, 숫자, 특수문자 포함)"
+            android:textColor="@color/darkred"
             android:gravity="right"
             android:layout_gravity="end"/>
 
@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="-5dp"
             android:text="&#x9;&#x9;비밀번호가 일치하지 않습니다."
-            android:textColor="@color/red"
+            android:textColor="@color/darkred"
             android:layout_gravity="end"/>
 
         <LinearLayout
