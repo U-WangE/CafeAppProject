@@ -1,7 +1,8 @@
 package com.example.cafeappproject.fragment
 
 import android.os.Bundle
-import android.util.Log
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +27,7 @@ class SignUpFragment : Fragment() {
         // NicknameCheck
         binding.idBtnSignupNicknamecheck.setOnClickListener {
             context?.let { it ->
-                overlapOrRulesCheck.NicknameCheck(
+                overlapOrRulesCheck.NicknameRulesCheck(
                     it,
                     binding.idTxtSignupNickname.text.toString()
                 )
@@ -34,13 +35,45 @@ class SignUpFragment : Fragment() {
         }
 
         // EmailCheck
-        binding.idBtnSignup.setOnClickListener {
-            context?.let { it ->
-                overlapOrRulesCheck.EmailCehck(
-                    it,
-                    binding.idTxtSignupNickname.text.toString()
-                )
+        binding.idTxtSignupEmail.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                context?.let { it ->
+                    overlapOrRulesCheck.EmailRulesCheck(it, binding.idSubtxtSignupEmail, s.toString())
+                }
             }
+
+            override fun afterTextChanged(s: Editable?) { }
+        })
+
+        binding.idTxtSignupPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                context?.let { it ->
+                    overlapOrRulesCheck.PasswordRulesCheck(it, binding.idSubtxtSignupPassword, s.toString())
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) { }
+        })
+
+        binding.idTxtSignupReconfirmpassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                context?.let { it ->
+                    overlapOrRulesCheck.ReconfirmPassword(it, binding.idSubtxtSignupReconfirmpassword, binding.idTxtSignupPassword, s.toString())
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) { }
+
+        })
+
+        binding.idBtnSignup.setOnClickListener {
+
         }
 
 

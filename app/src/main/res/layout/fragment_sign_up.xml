@@ -62,10 +62,11 @@
             android:textColor="@color/black" />
 
         <TextView
+            android:id="@+id/id_subtxt_signup_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-5dp"
-            android:text="&#x9;&#x9;로그인 / 본인 확인 이메일"
+            android:text="로그인 / 본인 확인 이메일"
             android:textColor="@color/red"
             android:layout_gravity="end"/>
 
@@ -80,6 +81,7 @@
             android:textColor="@color/black" />
 
         <TextView
+            android:id="@+id/id_subtxt_signup_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-5dp"
@@ -89,7 +91,7 @@
             android:layout_gravity="end"/>
 
         <EditText
-            android:id="@+id/id_txt_signup_passwordcheck"
+            android:id="@+id/id_txt_signup_reconfirmpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -99,6 +101,7 @@
             android:textColor="@color/black" />
 
         <TextView
+            android:id="@+id/id_subtxt_signup_reconfirmpassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-5dp"
