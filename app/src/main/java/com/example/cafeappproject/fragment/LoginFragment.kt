@@ -31,10 +31,10 @@ class LoginFragment : Fragment() {
 
         binding.idBtnLogin.setOnClickListener {
             it.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+            // 회원 정보 없을 시 Toast Message
+            Toast.makeText(activity, R.string.non_registered, Toast.LENGTH_SHORT).show()
         }
 
-        // 회원 정보 없을 시 Toast Message
-        Toast.makeText(activity, R.string.non_registered, Toast.LENGTH_SHORT).show()
 
         // Login -> Signup 화면 전환
         binding.idBtnSignup.setOnClickListener {

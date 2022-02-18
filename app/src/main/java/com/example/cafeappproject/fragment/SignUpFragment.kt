@@ -99,7 +99,7 @@ class SignUpFragment : Fragment() {
     }
 
 
-    // 프래그먼트가 destroy (파괴) 될때.. ????
+    // 프래그먼트가 destroy (파괴)
     override fun onDestroyView() {
         // onDestroyView 에서 binding class 인스턴스 참조를 정리해주어야 한다.
         mBinding = null

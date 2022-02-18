@@ -107,7 +107,7 @@ class OverlapOrRulesCheck() : SignupFinalCheck() {
             textBelow.text = context.getString(R.string.reconfirm_password_invalid_input)
     }
 
-    // Any Input Check
+    // Any Input Check && Load Firestore
     fun CheckAllInput(binding: FragmentSignUpBinding): Boolean {
         if (Check()) {
             mDatabase.collection("member").document().set(SignUp())
