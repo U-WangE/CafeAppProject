@@ -7,15 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import com.example.cafeappproject.R
 import com.example.cafeappproject.databinding.FragmentSignUpBinding
 
 class SignUpFragment : Fragment() {
     private var mBinding: FragmentSignUpBinding? = null
     private val binding get() = mBinding!!
 
-    data class User(var nickname: String?, var email: String?, var password: String?)
-
-    private var overlapOrRulesCheck = OverlapOrRulesCheck()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +22,8 @@ class SignUpFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         mBinding = FragmentSignUpBinding.inflate(inflater, container, false)
+
+        var overlapOrRulesCheck = OverlapOrRulesCheck()
 
         // NicknameCheck
         binding.idBtnSignupNicknamecheck.setOnClickListener {
@@ -36,45 +37,60 @@ class SignUpFragment : Fragment() {
 
         // EmailCheck
         binding.idTxtSignupEmail.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable?) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 context?.let { it ->
-                    overlapOrRulesCheck.EmailRulesCheck(it, binding.idSubtxtSignupEmail, s.toString())
+                    overlapOrRulesCheck.EmailRulesCheck(
+                        it,
+                        binding.idSubtxtSignupEmail,
+                        s.toString()
+                    )
                 }
             }
-
-            override fun afterTextChanged(s: Editable?) { }
         })
 
+        // Password
         binding.idTxtSignupPassword.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable?) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 context?.let { it ->
-                    overlapOrRulesCheck.PasswordRulesCheck(it, binding.idSubtxtSignupPassword, s.toString())
+                    overlapOrRulesCheck.PasswordRulesCheck(
+                        it,
+                        binding.idSubtxtSignupPassword,
+                        s.toString()
+                    )
                 }
             }
-
-            override fun afterTextChanged(s: Editable?) { }
         })
 
         binding.idTxtSignupReconfirmpassword.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable?) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 context?.let { it ->
-                    overlapOrRulesCheck.ReconfirmPassword(it, binding.idSubtxtSignupReconfirmpassword, binding.idTxtSignupPassword, s.toString())
+                    overlapOrRulesCheck.ReconfirmPassword(
+                        it,
+                        binding.idSubtxtSignupReconfirmpassword,
+                        binding.idTxtSignupPassword,
+                        s.toString()
+                    )
                 }
             }
-
-            override fun afterTextChanged(s: Editable?) { }
-
         })
 
+        // 회원가입 버튼 클릭
         binding.idBtnSignup.setOnClickListener {
-
+            // 이거
+            overlapOrRulesCheck.CheckAllInput(binding)
+            it.findNavController().navigate(R.id.action_signUpFragment_to_mainFragment)
         }
+
+
 
 
         return binding.root
@@ -87,6 +103,8 @@ class SignUpFragment : Fragment() {
     // 4: null
 
 
+
+
     // 프래그먼트가 destroy (파괴) 될때.. ????
     override fun onDestroyView() {
         // onDestroyView 에서 binding class 인스턴스 참조를 정리해주어야 한다.
@@ -95,5 +113,3 @@ class SignUpFragment : Fragment() {
     }
 
 }
-
-// 중복성 검사만을 위한 class 파일을 만들까?

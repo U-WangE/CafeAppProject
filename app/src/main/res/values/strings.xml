@@ -14,4 +14,5 @@
     <string name="password_invalid_input">올바른 않은 입력 입니다.\n(최소 8자, 하나 이상의 [영어, 숫자, 특수] 문자 입력)</string>
     <string name="reconfirm_password_currect_input">비밀번호가 일치합니다.</string>
     <string name="reconfirm_password_invalid_input">비밀번호가 일치하지 않습니다.</string>
+    <string name="some_input_errors">입력을 확인해 주세요.</string>
 </resources>
