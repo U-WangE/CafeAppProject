@@ -1,15 +1,14 @@
 package com.example.cafeappproject.fragment
 
 open class SignupFinalCheck {
-
-    data class User(var email: String?, var nickname: String?, var password: String?)
-
     private var email : String? = null
     private var nicknameCheck : Boolean? = false
     private var nickname : String? = null
     private var emailCheck : Boolean? = false
     private var password : String? = null
     private var passwordCheck : Boolean? = false
+
+    data class User(var email: String?, var nickname: String?, var password: String?)
 
     fun Email(email: String?) {
         this.email = email
@@ -27,10 +26,7 @@ open class SignupFinalCheck {
     }
 
     fun Check() : Boolean{
-        if(emailCheck == true && nicknameCheck == true && passwordCheck == true)
-            return true
-        else
-            return false
+        return emailCheck == true && nicknameCheck == true && passwordCheck == true
     }
 
     fun SignUp() : User{
