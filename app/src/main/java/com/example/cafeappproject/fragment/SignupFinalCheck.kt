@@ -1,6 +1,6 @@
 package com.example.cafeappproject.fragment
 
-open class SignupChecklist {
+open class SignupFinalCheck {
 
     data class User(var email: String?, var nickname: String?, var password: String?)
 
