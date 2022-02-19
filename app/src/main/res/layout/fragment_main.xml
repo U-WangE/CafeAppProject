@@ -6,97 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".fragment.MainFragment">
 
-    <ImageButton
-        android:id="@+id/buttonProfile"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:adjustViewBounds="true"
-        android:background="@color/white"
-        android:contentDescription="@string/profile"
-        android:cropToPadding="false"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/user"
-        app:layout_constraintEnd_toStartOf="@+id/buttonSetting"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include
+        layout="@layout/fragment_main_toolbar"
+        android:id="@+id/tb_main"/>
 
-    <ImageButton
-        android:id="@+id/buttonMenu"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="300dp"
-        android:adjustViewBounds="true"
-        android:background="@color/white"
-        android:contentDescription="menu"
-        android:cropToPadding="false"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/board"
-        app:layout_constraintBottom_toTopOf="@+id/textViewMenu"
-        app:layout_constraintEnd_toStartOf="@+id/buttonMembership"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/buttonMembership"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="300dp"
-        android:adjustViewBounds="true"
-        android:background="@color/white"
-        android:contentDescription="membership"
-        android:cropToPadding="false"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/membership"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonMenu"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/buttonSetting"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:adjustViewBounds="true"
-        android:background="@color/white"
-        android:contentDescription="@string/setting"
-        android:cropToPadding="false"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/setting"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewMenu"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Menu"
-        app:layout_constraintTop_toBottomOf="@+id/buttonMenu"
-        tools:layout_editor_absoluteX="117dp" />
-
-    <ImageButton
-        android:id="@+id/buttonNotice"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:adjustViewBounds="true"
-        android:background="@color/white"
-        android:contentDescription="@string/notice"
-        android:cropToPadding="false"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/notification_bell"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tb_main"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_graivty="center"
+            android:gravity="center">
+
+            <include
+                layout="@layout/fragment_main_panel0"
+                android:id="@+id/panel0_main"/>
+
+            <include
+                layout="@layout/fragment_main_panel1"
+                android:id="@+id/panel1_main"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
