@@ -2,6 +2,7 @@ package com.example.cafeappproject.fragment
 
 import android.content.Context
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.cafeappproject.R
@@ -12,7 +13,7 @@ import com.google.firebase.ktx.Firebase
 class OverlapOrRulesCheck() : SignupFinalCheck() {
     val mDatabase = Firebase.firestore
 
-    fun OverlapCallback(text: String?, type: String, callback: ((Boolean) -> Unit)) {
+    fun OverlapCallback(text: String?, type: String?, callback: ((Boolean) -> Unit)) {
         var isOverlap = false
         mDatabase.collection("member")
             .get()
@@ -32,19 +33,20 @@ class OverlapOrRulesCheck() : SignupFinalCheck() {
 
     // Nickname
     // Nickname 유효성 검사
-    fun NicknameRulesCheck(context: Context, inputText: String?) {
+    fun NicknameRulesCheck(context: Context, inputText: String?, btnNicknamecheck: Button) {
         val exp = Regex("^[가-힣ㄱ-ㅎa-zA-Z0-9._-]{2,}\$")  // nickname 정규식(숫자, 영어, 한국어와 언더스코어)
-
         if (inputText.isNullOrEmpty())  // nickname null or Empty 확인
             Toast.makeText(context, R.string.non_input, Toast.LENGTH_SHORT).show()
         else if (!exp.matches(inputText))  // nickname 정규식 유효성 검사
             Toast.makeText(context, R.string.nickname_invalid_input, Toast.LENGTH_SHORT).show()
-        else
-            NicknameOverlapCheck(context, inputText)  // 중복성 검사
+        else {
+            btnNicknamecheck.text = "···"
+            NicknameOverlapCheck(context, inputText, btnNicknamecheck)  // 중복성 검사
+        }
     }
 
     // Nickname 중복성 검사
-    fun NicknameOverlapCheck(context: Context, inputText: String) {
+    fun NicknameOverlapCheck(context: Context, inputText: String, btnNicknamecheck: Button) {
         OverlapCallback(inputText, "nickname") {
             if (!it) {
                 Toast.makeText(context, R.string.correct_input, Toast.LENGTH_SHORT).show()
@@ -52,6 +54,7 @@ class OverlapOrRulesCheck() : SignupFinalCheck() {
             } else {  // nickname 중복
                 Toast.makeText(context, R.string.nickname_overlap_input, Toast.LENGTH_SHORT).show()
             }
+            btnNicknamecheck.text = "확인"
         }
     }
 

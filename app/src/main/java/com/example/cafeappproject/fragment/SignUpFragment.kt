@@ -24,14 +24,15 @@ class SignUpFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding = FragmentSignUpBinding.inflate(inflater, container, false)
 
-        var overlapOrRulesCheck = OverlapOrRulesCheck()
+        val overlapOrRulesCheck = OverlapOrRulesCheck()
 
         // NicknameCheck
         binding.idBtnSignupNicknamecheck.setOnClickListener {
             context?.let { it ->
                 overlapOrRulesCheck.NicknameRulesCheck(
                     it,
-                    binding.idTxtSignupNickname.text.toString()
+                    binding.idTxtSignupNickname.text.toString(),
+                    binding.idBtnSignupNicknamecheck
                 )
             }
         }

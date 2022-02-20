@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/connectScreenFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -96,6 +96,18 @@
             app:destination="@id/membershipFragment" />
         <action
             android:id="@+id/action_profileFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/connectScreenFragment"
+        android:name="com.example.cafeappproject.fragment.ConnectScreenFragment"
+        android:label="fragment_connect_screen"
+        tools:layout="@layout/fragment_connect_screen" >
+        <action
+            android:id="@+id/action_connectScreenFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_connectScreenFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 </navigation>
