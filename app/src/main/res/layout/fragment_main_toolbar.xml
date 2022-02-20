@@ -3,39 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar_main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="48dp"
     android:background="?attr/colorBackgroundFloating">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/id_btn_notification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_notification"
-            android:background=""
-            android:scaleType="fitCenter"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/pk_coffee_logo"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <ImageButton
-            android:id="@+id/id_btn_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_profile"
-            android:background=""
-            android:scaleType="fitCenter"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toStartOf="@id/id_btn_settings"
-            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageButton
-            android:id="@+id/id_btn_settings"
+            android:id="@+id/id_btn_toolbar_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_settings"
+            android:src="@drawable/ic_toolbar_menu"
             android:background=""
             android:scaleType="fitCenter"
             android:layout_marginEnd="16dp"

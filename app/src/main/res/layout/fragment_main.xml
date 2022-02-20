@@ -6,10 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".fragment.MainFragment">
 
+    <!-- Toolbar -->
     <include
         layout="@layout/fragment_main_toolbar"
         android:id="@+id/tb_main"/>
 
+    <!-- Main Body -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,10 +26,12 @@
             android:layout_graivty="center"
             android:gravity="center">
 
+            <!-- Image Slider -->
             <include
                 layout="@layout/fragment_main_panel0"
                 android:id="@+id/panel0_main"/>
 
+            <!-- Menu Buttons -->
             <include
                 layout="@layout/fragment_main_panel1"
                 android:id="@+id/panel1_main"/>
