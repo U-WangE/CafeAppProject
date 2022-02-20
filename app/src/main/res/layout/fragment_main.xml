@@ -12,148 +12,137 @@
         android:id="@+id/tb_main"/>
 
     <!-- Main Body -->
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_graivty="center"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tb_main"
-        android:fillViewport="true">
+        app:layout_constraintTop_toBottomOf="@id/tb_main">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- Image Slider -->
+        <include
+            layout="@layout/fragment_main_slider"
+            android:id="@+id/panel0_main"/>
+
+        <!-- Menu Buttons -->
+        <GridLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_graivty="center"
-            android:gravity="center">
+            android:layout_marginTop="36dp"
+            android:columnCount="3"
+            android:orientation="horizontal"
+            android:rowCount="100"
+            android:useDefaultMargins="true">
 
-            <!-- Image Slider -->
-            <include
-                layout="@layout/fragment_main_slider"
-                android:id="@+id/panel0_main"/>
-
-            <!-- Menu Buttons -->
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="36dp">
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <ImageButton
+                    android:id="@+id/id_btn_main_membership"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:background=""
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_membership" />
 
-                    <ImageButton
-                        android:id="@+id/id_btn_main_membership"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_membership"
-                        android:background=""
-                        android:scaleType="fitCenter"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="PK멤버쉽"/>
-
-                </LinearLayout>
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_marginStart="36dp">
-
-                    <ImageButton
-                        android:id="@+id/id_btn_main_menu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_menu"
-                        android:background=""
-                        android:scaleType="fitCenter"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="메뉴"/>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_marginStart="36dp">
-
-                    <ImageButton
-                        android:id="@+id/id_btn_main_coupon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_coupon"
-                        android:background=""
-                        android:scaleType="fitCenter"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="쿠폰"/>
-
-                </LinearLayout>
+                    android:text="PK멤버쉽" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <ImageButton
+                    android:id="@+id/id_btn_main_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:background=""
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_menu" />
 
-                    <ImageButton
-                        android:id="@+id/id_btn_main_store"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_store"
-                        android:background=""
-                        android:scaleType="fitCenter"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="매장"/>
-
-                </LinearLayout>
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_marginStart="36dp">
-
-                    <ImageButton
-                        android:id="@+id/id_btn_main_event"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_event"
-                        android:background=""
-                        android:scaleType="fitCenter"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="이벤트"/>
-
-                </LinearLayout>
+                    android:text="메뉴" />
 
             </LinearLayout>
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
+                <ImageButton
+                    android:id="@+id/id_btn_main_coupon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background=""
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_coupon" />
 
-    </ScrollView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="쿠폰" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/id_btn_main_store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background=""
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_store" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="매장" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/id_btn_main_event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background=""
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_event" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이벤트" />
+
+            </LinearLayout>
+
+        </GridLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
