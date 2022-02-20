@@ -6,10 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".fragment.MainFragment">
 
-    <!-- Toolbar -->
-    <include
-        layout="@layout/fragment_main_toolbar"
-        android:id="@+id/tb_main"/>
+    <!-- Top  -->
+    <LinearLayout
+        android:id="@+id/tb_main"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/pk_coffee_logo"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/id_btn_toolbar_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_toolbar_menu"
+        android:background=""
+        android:scaleType="fitCenter"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tb_main"
+        app:layout_constraintBottom_toBottomOf="@id/tb_main"/>
 
     <!-- Main Body -->
     <LinearLayout
