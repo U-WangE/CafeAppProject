@@ -16,6 +16,7 @@ import com.example.cafeappproject.R
 import com.example.cafeappproject.databinding.FragmentLoginBinding
 import com.example.cafeappproject.databinding.FragmentMainBinding
 import com.example.cafeappproject.databinding.FragmentSignUpBinding
+import com.smarteist.autoimageslider.SliderViewAdapter
 
 class MainFragment : Fragment() {
 
@@ -40,6 +41,7 @@ class MainFragment : Fragment() {
 
 
 }
+
 
 class ViewPagerAdapter(private val context: Context) : PagerAdapter() {
     private var layoutInflater: LayoutInflater? = null
