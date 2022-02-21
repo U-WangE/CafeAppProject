@@ -87,12 +87,16 @@ class SignUpFragment : Fragment() {
         })
 
         // 회원가입 버튼 클릭
-        binding.idBtnSignup.setOnClickListener {
-            // 이거
+        binding.idBtnSignup.setOnClickListener { it ->
             if(overlapOrRulesCheck.CheckAllInput(binding))
                 it.findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
             else
                 Toast.makeText(activity, R.string.some_input_errors, Toast.LENGTH_SHORT).show()
+        }
+
+        //취소 버튼
+        binding.idBtnSignupCancel.setOnClickListener { it ->
+            it.findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
         }
 
 
