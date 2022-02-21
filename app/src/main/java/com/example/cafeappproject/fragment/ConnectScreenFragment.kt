@@ -24,7 +24,7 @@ class ConnectScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding = FragmentConnectScreenBinding.inflate(inflater, container, false)
 
-        activity?.let { it -> MySharedPreferences.clearUser(it) }
+//        activity?.let { it -> MySharedPreferences.clearUser(it) }
 
         binding.idTxtClick.setOnClickListener { view ->
             if(!activity?.let { it -> MySharedPreferences.getUserEmail(it) }
