@@ -70,7 +70,6 @@
                     android:id="@+id/id_btn_main_membership"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background=""
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_membership" />
 
@@ -91,7 +90,6 @@
                     android:id="@+id/id_btn_main_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background=""
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_menu" />
 
@@ -112,7 +110,6 @@
                     android:id="@+id/id_btn_main_coupon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background=""
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_coupon" />
 
@@ -133,7 +130,6 @@
                     android:id="@+id/id_btn_main_store"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background=""
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_store" />
 
@@ -154,7 +150,6 @@
                     android:id="@+id/id_btn_main_event"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background=""
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_event" />
 
