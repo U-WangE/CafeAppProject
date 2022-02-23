@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/id_drawer"
+    android:id="@+id/id_drawerLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -34,7 +34,7 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/id_btn_toolbar_menu"
+            android:id="@+id/id_btn_drawer_open"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitCenter"
@@ -221,13 +221,10 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:layout_width="400dp"
+    <include
+        layout="@layout/fragment_main_drawer"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="48sp"
-        android:text="DRAWER"
-        android:background="#009688"
-        android:layout_gravity="left"/>
+        android:layout_width="0dp"
+        android:layout_gravity="right"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

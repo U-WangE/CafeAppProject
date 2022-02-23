@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Text Headline -->
+    <style name="TextAppearance.CafeAppProject.Headline1"
+        parent="TextAppearance.MaterialComponents.Headline1">
+    </style>
+    <style name="TextAppearance.CafeAppProject.Headline2"
+        parent="TextAppearance.MaterialComponents.Headline2">
+    </style>
+    <style name="TextAppearance.CafeAppProject.Headline3"
+        parent="TextAppearance.MaterialComponents.Headline3">
+    </style>
+    <style name="TextAppearance.CafeAppProject.Headline4"
+        parent="TextAppearance.MaterialComponents.Headline4">
+    </style>
 
+    <!-- Text Body-->
+    <style name="TextAppearance.CafeAppProject.Body1"
+        parent="TextAppearance.MaterialComponents.Body1">
+    </style>
+    <style name="TextAppearance.CafeAppProject.Body2"
+        parent="TextAppearance.MaterialComponents.Body2">
+    </style>
+    <style name="TextAppearance.CafeAppProject.Body3"
+        parent="TextAppearance.MaterialComponents.Body3">
+    </style>
+    <style name="TextAppearance.CafeAppProject.Body4"
+        parent="TextAppearance.MaterialComponents.Body4">
+    </style>
 
 </resources>
