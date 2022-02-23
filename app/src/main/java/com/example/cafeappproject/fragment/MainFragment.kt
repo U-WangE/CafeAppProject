@@ -49,10 +49,9 @@ class MainFragment : Fragment() {
         val sysWidth = resources.displayMetrics.widthPixels
         val sysWidthDP = pxToDp(sysWidth)
         val drawer = getView()?.findViewById<ConstraintLayout>(R.id.id_drawer)
-        val currentWidthDP = drawer?.layoutParams?.width?.let { pxToDp(it) }
-        if (currentWidthDP != null) {
-            if (currentWidthDP < 300) {
-                drawer?.layoutParams?.width = sysWidth
+        if (sysWidthDP != null) {
+            if (sysWidthDP * 0.8 < 300) {
+                drawer?.layoutParams?.width = dpToPx((sysWidthDP * 0.8).toInt())
             }
             else {
                 drawer?.layoutParams?.width = dpToPx(300)
