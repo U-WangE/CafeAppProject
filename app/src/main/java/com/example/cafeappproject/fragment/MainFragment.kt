@@ -22,6 +22,7 @@ import com.example.cafeappproject.R
 import com.example.cafeappproject.databinding.FragmentLoginBinding
 import com.example.cafeappproject.databinding.FragmentMainBinding
 import com.example.cafeappproject.databinding.FragmentSignUpBinding
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
 class MainFragment : Fragment() {
 
@@ -43,6 +44,17 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        /*
+
+
+
+            Drawer
+
+
+
+         */
+
 
         // Drawer: set width dynamically
         val sysWidth = resources.displayMetrics.widthPixels
@@ -72,16 +84,32 @@ class MainFragment : Fragment() {
             }
         }
 
+        /*
 
-        // ViewPager
+
+
+            ViewPager2
+
+
+
+         */
+        // images for image slider
         val arrImg: ArrayList<Int> = ArrayList()
         arrImg.add(R.drawable.slider_coffee)
         arrImg.add(R.drawable.slider_latte)
         arrImg.add(R.drawable.slider_strawberry)
+
+        // connect adapter
         val adapter = MainSliderAdapter(arrImg)
         val viewPager2 = getView()?.findViewById<ViewPager2>(R.id.id_imageslider_main)
         viewPager2?.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewPager2?.adapter = adapter
+
+        // connect indicator
+        val indicator = getView()?.findViewById<DotsIndicator>(R.id.id_indicator_main)
+        if (viewPager2 != null) {
+            indicator?.setViewPager2(viewPager2)
+        }
     }
 
     fun dpToPx(dp: Int): Int {
