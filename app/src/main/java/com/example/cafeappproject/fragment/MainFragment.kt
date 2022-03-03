@@ -3,6 +3,8 @@ package com.example.cafeappproject.fragment
 import android.content.Context
 import android.media.Image
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.util.DisplayMetrics
 import android.view.Gravity
 import androidx.fragment.app.Fragment
@@ -29,8 +31,10 @@ class MainFragment : Fragment() {
     private var mBinding: FragmentMainBinding? = null
     private val binding get() = mBinding!!
 
-    private val imgList = mutableListOf<Image>()
-    //private lateinit var viewPager2: ViewPager2
+    private val arrImg: ArrayList<Int> = ArrayList()
+    private val imgSliderHander = ImageSliderHandler()
+    private var imgCurrentPosition = 0          // slider position
+    private val intervalTime = 1500.toLong()    // for autoscroll, 1500ms = 1.5s
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -94,7 +98,6 @@ class MainFragment : Fragment() {
 
          */
         // images for image slider
-        val arrImg: ArrayList<Int> = ArrayList()
         arrImg.add(R.drawable.slider_coffee)
         arrImg.add(R.drawable.slider_latte)
         arrImg.add(R.drawable.slider_strawberry)
@@ -110,16 +113,57 @@ class MainFragment : Fragment() {
         if (viewPager2 != null) {
             indicator?.setViewPager2(viewPager2)
         }
+
+        // auto scroll image slider
+        viewPager2?.setCurrentItem(imgCurrentPosition, false)
+        viewPager2?.apply {
+            registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+                override fun onPageScrollStateChanged(state: Int) {
+                    super.onPageScrollStateChanged(state)
+                    when (state) {
+                        ViewPager2.SCROLL_STATE_IDLE -> autoScrollStart(intervalTime)
+                        ViewPager2.SCROLL_STATE_DRAGGING -> autoScrollStop()
+                    }
+                }
+            })
+        }
     }
 
-    fun dpToPx(dp: Int): Int {
+    private fun dpToPx(dp: Int): Int {
         val displayMetrics = resources.displayMetrics
         return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
     }
-    fun pxToDp(px: Int): Int {
+    private fun pxToDp(px: Int): Int {
         val displayMetrics = resources.displayMetrics
         return Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
     }
 
-
+    private fun autoScrollStart(intervalTime: Long) {
+        imgSliderHander.removeMessages(0)   // prevent handler duplication
+        imgSliderHander.sendEmptyMessageDelayed(0, intervalTime)    // restart in $intervalTime
+    }
+    private fun autoScrollStop() {
+        imgSliderHander.removeMessages(0)   // stop handler
+    }
+    private inner class ImageSliderHandler: Handler() {
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            if (msg.what == 0) {
+                val viewPager2 = view?.findViewById<ViewPager2>(R.id.id_imageslider_main)
+                imgCurrentPosition = viewPager2?.currentItem!!
+                imgCurrentPosition++
+                imgCurrentPosition %= arrImg.size
+                viewPager2?.setCurrentItem(imgCurrentPosition, true)
+                autoScrollStart(intervalTime)
+            }
+        }
+    }
+    override fun onResume() {
+        super.onResume()
+        autoScrollStart(intervalTime)   // auto scroll imageSlider
+    }
+    override fun onPause() {
+        super.onPause()
+        autoScrollStop()    // stop auto scroll when away from MainFragment
+    }
 }
