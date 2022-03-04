@@ -4,6 +4,11 @@
     <string name="notice">notice</string>
     <string name="profile">profile</string>
     <string name="setting">setting</string>
+
+    <!--Main Page-->
+    <string name="backbutton_pressed">한번 더 누르면 종료</string>
+
+    <!--Login, SignUp Page-->
     <string name="non_registered">일치하는 정보가 없습니다.\n이메일 or 비밀번호를 확인해 주세요.</string>
     <string name="Login">로그인 되었습니다.</string>
     <string name="non_input">회원 정보를 입력해 주세요.</string>
@@ -16,6 +21,9 @@
     <string name="reconfirm_password_currect_input">비밀번호가 일치합니다.</string>
     <string name="reconfirm_password_invalid_input">비밀번호가 일치하지 않습니다.</string>
     <string name="some_input_errors">입력을 확인해 주세요.</string>
+
+    <!--Setting Page-->
     <string name="autologin_setting_success_change">로그인 설정 변경 성공</string>
     <string name="autologin_setting_failure_change">로그인 설정 변경 실패</string>
+
 </resources>
