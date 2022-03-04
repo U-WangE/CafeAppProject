@@ -12,15 +12,21 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.cafeappproject.R
+import com.example.cafeappproject.databinding.FragmentLoginBinding
 import com.example.cafeappproject.databinding.FragmentMainBinding
+import com.example.cafeappproject.databinding.FragmentMainDrawerBinding
 import me.relex.circleindicator.CircleIndicator
 
 class MainFragment : Fragment() {
 
     private var mBinding: FragmentMainBinding? = null
     private val binding get() = mBinding!!
+
+    private var mBindingDrawer: FragmentMainDrawerBinding? = null
+    private val bindingDrawer get() = mBindingDrawer!!
 
     private val arrImg: ArrayList<Int> = ArrayList()    // Image Data for ImageSlider
     private val imgSliderHander = ImageSliderHandler()  // autoscroll handler for ImageSlider
@@ -31,21 +37,37 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        getView()?.findViewById<ImageButton>(R.id.id_btn_membership_main)?.setOnClickListener {
+            it.findNavController().navigate(R.id.action_mainFragment_to_membershipFragment)
+        }
+        getView()?.findViewById<ImageButton>(R.id.id_btn_menu_main)?.setOnClickListener {
+            it.findNavController().navigate(R.id.action_mainFragment_to_menuFragment)
+        }
+        getView()?.findViewById<ImageButton>(R.id.id_btn_notifications_drawer)?.setOnClickListener {
+            it.findNavController().navigate(R.id.action_mainFragment_to_noticeFragment)
+        }
+        getView()?.findViewById<ImageButton>(R.id.id_btn_settings_drawer)?.setOnClickListener {
+            it.findNavController().navigate(R.id.action_mainFragment_to_settingFragment)
+        }
         /*
 
 
 
             Drawer
                 occupies along the display
+                디스플레이에서 차지하는 정도
                     at least: 0.8 of the system display width
+                    최소한 전체 디스플레이 가로의 0.8 비율
                     at most: 300dp
+                    최대 300dp
                 opened/closed by buttons
+                버튼에 의해 열기/닫기 가능
 
 
 
@@ -62,7 +84,7 @@ class MainFragment : Fragment() {
                 drawer?.layoutParams?.width = dpToPx((sysWidthDP * 0.8).toInt())
             }
             else {
-                // fix the drawer's width to be 300dp if it tries to exceed.
+                // fix the drawer's width to be 300dp if exceeds
                 drawer?.layoutParams?.width = dpToPx(300)
             }
         }
@@ -88,8 +110,11 @@ class MainFragment : Fragment() {
 
             ViewPager2
                 automatically slides over (every 3s)
+                자동 슬라이드 (3초마다)
                 infinite loop
+                무한 루프
                 with indicator
+                슬라이드 순서 표시
 
 
 
@@ -100,7 +125,7 @@ class MainFragment : Fragment() {
             R.drawable.slider_latte,
             R.drawable.slider_strawberry
         )
-        arrImg.add(arrImgData[arrImgData.size - 1])
+        arrImg.add(arrImgData[arrImgData.size - 1]) // trick for infinite loop
         arrImg.addAll(arrImgData)
         arrImg.add(arrImgData[0])
 
