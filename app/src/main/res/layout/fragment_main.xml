@@ -60,15 +60,13 @@
             app:layout_constraintTop_toBottomOf="@id/id_toolbar_main"
             app:layout_constraintBottom_toTopOf="@id/id_grid_main"/>
 
-        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+        <me.relex.circleindicator.CircleIndicator
             android:id="@+id/id_indicator_main"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_margin="16dp"
-            app:dotsColor="@color/gray"
-            app:selectedDotColor="@color/design_default_color_secondary"
-            app:dotsWidthFactor="1"
-            app:progressMode="false"
+            app:ci_drawable_unselected="@drawable/ic_circle_gray"
+            app:ci_drawable="@drawable/ic_circle_secondary"
             app:layout_constraintHeight_percent="0.015"
             app:layout_constraintStart_toStartOf="@id/id_imageslider_main"
             app:layout_constraintEnd_toEndOf="@id/id_imageslider_main"

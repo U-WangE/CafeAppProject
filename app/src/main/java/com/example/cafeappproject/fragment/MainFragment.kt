@@ -24,7 +24,7 @@ import com.example.cafeappproject.R
 import com.example.cafeappproject.databinding.FragmentLoginBinding
 import com.example.cafeappproject.databinding.FragmentMainBinding
 import com.example.cafeappproject.databinding.FragmentSignUpBinding
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+import me.relex.circleindicator.CircleIndicator
 
 class MainFragment : Fragment() {
 
@@ -34,7 +34,7 @@ class MainFragment : Fragment() {
     private val arrImg: ArrayList<Int> = ArrayList()
     private val imgSliderHander = ImageSliderHandler()
     private var imgCurrentPosition = 0          // slider position
-    private val intervalTime = 1500.toLong()    // for autoscroll, 1500ms = 1.5s
+    private val intervalTime = 3000.toLong()    // for autoscroll, 1500ms = 1.5s
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,6 +54,9 @@ class MainFragment : Fragment() {
 
 
             Drawer
+            occupies display width
+                at least: 0.8 of the system display width
+                at most: 300dp
 
 
 
@@ -61,18 +64,20 @@ class MainFragment : Fragment() {
 
 
         // Drawer: set width dynamically
-        val sysWidth = resources.displayMetrics.widthPixels
-        val sysWidthDP = pxToDp(sysWidth)
+        val sysWidth = resources.displayMetrics.widthPixels // get current display width
+        val sysWidthDP = pxToDp(sysWidth)   //  get current display width as DP
         val drawer = getView()?.findViewById<ConstraintLayout>(R.id.id_drawer)
         if (sysWidthDP != null) {
             if (sysWidthDP * 0.8 < 300) {
+                // make the drawer's width as 0.8 of total width
                 drawer?.layoutParams?.width = dpToPx((sysWidthDP * 0.8).toInt())
             }
             else {
+                // fix the drawer's width to be 300dp if it tries to exceed.
                 drawer?.layoutParams?.width = dpToPx(300)
             }
         }
-        // Drawer: open drawer
+        // Drawer: open drawer when side menu button is clicked
         val drawerLayout = getView()?.findViewById<DrawerLayout>(R.id.id_drawerLayout)
         val openDrawer = getView()?.findViewById<ImageButton>(R.id.id_btn_drawer_open)
         openDrawer?.setOnClickListener {
@@ -80,7 +85,7 @@ class MainFragment : Fragment() {
                 drawerLayout.openDrawer(Gravity.RIGHT)
             }
         }
-        // Drawer: close drawer
+        // Drawer: close drawer when cancel button is clicked
         val closeDrawer = getView()?.findViewById<ImageButton>(R.id.id_btn_drawer_close)
         closeDrawer?.setOnClickListener {
             if (drawerLayout!!.isDrawerOpen(Gravity.RIGHT)) {
@@ -93,14 +98,20 @@ class MainFragment : Fragment() {
 
 
             ViewPager2
+            automatically slides over
 
 
 
          */
-        // images for image slider
-        arrImg.add(R.drawable.slider_coffee)
-        arrImg.add(R.drawable.slider_latte)
-        arrImg.add(R.drawable.slider_strawberry)
+        // store images for image slider
+        val arrImgData = arrayListOf<Int>(
+            R.drawable.slider_coffee,
+            R.drawable.slider_latte,
+            R.drawable.slider_strawberry
+        )
+        arrImg.add(arrImgData[arrImgData.size - 1])
+        arrImg.addAll(arrImgData)
+        arrImg.add(arrImgData[0])
 
         // connect adapter
         val adapter = MainSliderAdapter(arrImg)
@@ -108,24 +119,37 @@ class MainFragment : Fragment() {
         viewPager2?.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewPager2?.adapter = adapter
 
-        // connect indicator
-        val indicator = getView()?.findViewById<DotsIndicator>(R.id.id_indicator_main)
-        if (viewPager2 != null) {
-            indicator?.setViewPager2(viewPager2)
-        }
+        // Set indicator
+        val indicator = getView()?.findViewById<CircleIndicator>(R.id.id_indicator_main)
+        indicator?.createIndicators(arrImgData.size, 1)
+        indicator?.animatePageSelected(0)
 
         // auto scroll image slider
+        // infinite/endless page loop
         viewPager2?.setCurrentItem(imgCurrentPosition, false)
         viewPager2?.apply {
             registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
                 override fun onPageScrollStateChanged(state: Int) {
                     super.onPageScrollStateChanged(state)
-                    when (state) {
+                    if (state == ViewPager2.SCROLL_STATE_IDLE
+                        || state == ViewPager2.SCROLL_STATE_DRAGGING) {
+                        if (currentItem == 0) {
+                            // Reached Front, Change Index to Last
+                            setCurrentItem(arrImg.size - 2, false)
+                        }
+                        else if (currentItem == arrImg.size - 1) {
+                            // Reached Rear, Change Index to First
+                            setCurrentItem(1, false)
+                        }
+                    }
+                    when (state) { // Apply Auto slide
                         ViewPager2.SCROLL_STATE_IDLE -> autoScrollStart(intervalTime)
                         ViewPager2.SCROLL_STATE_DRAGGING -> autoScrollStop()
                     }
+                    indicator?.animatePageSelected(currentItem - 1)
                 }
             })
+            setCurrentItem(1, false)
         }
     }
 

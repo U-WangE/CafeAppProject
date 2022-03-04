@@ -18,6 +18,8 @@ class MainSliderAdapter(imgData: ArrayList<Int>) :
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var item: ImageView = itemView.findViewById(R.id.id_img_slide)
     }
+
+    // Create ViewHolder and return it
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val context = parent.context
         val inflater: LayoutInflater =
@@ -27,6 +29,7 @@ class MainSliderAdapter(imgData: ArrayList<Int>) :
         return viewHolder
     }
 
+    // Set data to be shown
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.item.setImageResource(arrData[position])
     }
@@ -34,5 +37,4 @@ class MainSliderAdapter(imgData: ArrayList<Int>) :
     override fun getItemCount(): Int {
         return arrData.size
     }
-
 }
