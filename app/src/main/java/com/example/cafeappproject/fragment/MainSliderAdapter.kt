@@ -13,13 +13,23 @@ import com.example.cafeappproject.R
 
 class MainSliderAdapter(imgData: ArrayList<Int>) :
         RecyclerView.Adapter<MainSliderAdapter.MyViewHolder>() {
-    val arrData = imgData
+    /*
 
+
+        Simple RecyclerView Adapter
+            for ImageSlider
+            in main fragment
+
+
+     */
+    val arrData = imgData   // list of images
+
+    // Bind ImageView with ViewHolder
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var item: ImageView = itemView.findViewById(R.id.id_img_slide)
     }
 
-    // Create ViewHolder and return it
+    // Create ViewHolder and return
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val context = parent.context
         val inflater: LayoutInflater =

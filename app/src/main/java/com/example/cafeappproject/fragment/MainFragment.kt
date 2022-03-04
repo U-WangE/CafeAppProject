@@ -1,7 +1,5 @@
 package com.example.cafeappproject.fragment
 
-import android.content.Context
-import android.media.Image
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -12,18 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.cafeappproject.R
-import com.example.cafeappproject.databinding.FragmentLoginBinding
 import com.example.cafeappproject.databinding.FragmentMainBinding
-import com.example.cafeappproject.databinding.FragmentSignUpBinding
 import me.relex.circleindicator.CircleIndicator
 
 class MainFragment : Fragment() {
@@ -31,18 +22,15 @@ class MainFragment : Fragment() {
     private var mBinding: FragmentMainBinding? = null
     private val binding get() = mBinding!!
 
-    private val arrImg: ArrayList<Int> = ArrayList()
-    private val imgSliderHander = ImageSliderHandler()
-    private var imgCurrentPosition = 0          // slider position
+    private val arrImg: ArrayList<Int> = ArrayList()    // Image Data for ImageSlider
+    private val imgSliderHander = ImageSliderHandler()  // autoscroll handler for ImageSlider
+    private var imgCurrentPosition = 0
     private val intervalTime = 3000.toLong()    // for autoscroll, 1500ms = 1.5s
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        //mBinding = FragmentMainBinding.inflate(inflater, container, false)
-
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
@@ -54,9 +42,10 @@ class MainFragment : Fragment() {
 
 
             Drawer
-            occupies display width
-                at least: 0.8 of the system display width
-                at most: 300dp
+                occupies along the display
+                    at least: 0.8 of the system display width
+                    at most: 300dp
+                opened/closed by buttons
 
 
 
@@ -65,8 +54,8 @@ class MainFragment : Fragment() {
 
         // Drawer: set width dynamically
         val sysWidth = resources.displayMetrics.widthPixels // get current display width
-        val sysWidthDP = pxToDp(sysWidth)   //  get current display width as DP
-        val drawer = getView()?.findViewById<ConstraintLayout>(R.id.id_drawer)
+        val sysWidthDP = pxToDp(sysWidth)                   // get current display width as DP
+        val drawer = getView()?.findViewById<ConstraintLayout>(R.id.id_constraint_drawer_drawer)
         if (sysWidthDP != null) {
             if (sysWidthDP * 0.8 < 300) {
                 // make the drawer's width as 0.8 of total width
@@ -77,19 +66,19 @@ class MainFragment : Fragment() {
                 drawer?.layoutParams?.width = dpToPx(300)
             }
         }
-        // Drawer: open drawer when side menu button is clicked
-        val drawerLayout = getView()?.findViewById<DrawerLayout>(R.id.id_drawerLayout)
-        val openDrawer = getView()?.findViewById<ImageButton>(R.id.id_btn_drawer_open)
+        // Drawer: menu btn clicked -> open drawer
+        val drawerLayout = getView()?.findViewById<DrawerLayout>(R.id.id_drawer_drawer_main)
+        val openDrawer = getView()?.findViewById<ImageButton>(R.id.id_btn_main_opendrawer)
         openDrawer?.setOnClickListener {
             if (!drawerLayout!!.isDrawerOpen(Gravity.RIGHT)) {
-                drawerLayout.openDrawer(Gravity.RIGHT)
+                drawerLayout.openDrawer(Gravity.RIGHT)  // open drawer if not opened
             }
         }
-        // Drawer: close drawer when cancel button is clicked
-        val closeDrawer = getView()?.findViewById<ImageButton>(R.id.id_btn_drawer_close)
+        // Drawer: cancel btn clicked -> close drawer
+        val closeDrawer = getView()?.findViewById<ImageButton>(R.id.id_btn_close_drawer)
         closeDrawer?.setOnClickListener {
             if (drawerLayout!!.isDrawerOpen(Gravity.RIGHT)) {
-                drawerLayout.closeDrawer(Gravity.RIGHT)
+                drawerLayout.closeDrawer(Gravity.RIGHT) // close drawer if not closed
             }
         }
 
@@ -98,7 +87,9 @@ class MainFragment : Fragment() {
 
 
             ViewPager2
-            automatically slides over
+                automatically slides over (every 3s)
+                infinite loop
+                with indicator
 
 
 
@@ -115,12 +106,12 @@ class MainFragment : Fragment() {
 
         // connect adapter
         val adapter = MainSliderAdapter(arrImg)
-        val viewPager2 = getView()?.findViewById<ViewPager2>(R.id.id_imageslider_main)
+        val viewPager2 = getView()?.findViewById<ViewPager2>(R.id.id_vp2_main_imageslider)
         viewPager2?.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewPager2?.adapter = adapter
 
         // Set indicator
-        val indicator = getView()?.findViewById<CircleIndicator>(R.id.id_indicator_main)
+        val indicator = getView()?.findViewById<CircleIndicator>(R.id.id_lib_indicator_main)
         indicator?.createIndicators(arrImgData.size, 1)
         indicator?.animatePageSelected(0)
 
@@ -153,6 +144,7 @@ class MainFragment : Fragment() {
         }
     }
 
+    // calculator for drawer
     private fun dpToPx(dp: Int): Int {
         val displayMetrics = resources.displayMetrics
         return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
@@ -162,23 +154,26 @@ class MainFragment : Fragment() {
         return Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
     }
 
+    // autoscroll for ImageSlider
     private fun autoScrollStart(intervalTime: Long) {
         imgSliderHander.removeMessages(0)   // prevent handler duplication
-        imgSliderHander.sendEmptyMessageDelayed(0, intervalTime)    // restart in $intervalTime
+        imgSliderHander.sendEmptyMessageDelayed(0, intervalTime)    // resend message in $intervalTime
     }
     private fun autoScrollStop() {
         imgSliderHander.removeMessages(0)   // stop handler
     }
+
+    // Message Handler for ImageSlider
     private inner class ImageSliderHandler: Handler() {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
             if (msg.what == 0) {
-                val viewPager2 = view?.findViewById<ViewPager2>(R.id.id_imageslider_main)
+                val viewPager2 = view?.findViewById<ViewPager2>(R.id.id_vp2_main_imageslider)
                 imgCurrentPosition = viewPager2?.currentItem!!
-                imgCurrentPosition++
-                imgCurrentPosition %= arrImg.size
+                imgCurrentPosition++    // move to next slide
+                imgCurrentPosition %= arrImg.size   // not needed in infinite slide, but for defensive
                 viewPager2?.setCurrentItem(imgCurrentPosition, true)
-                autoScrollStart(intervalTime)
+                autoScrollStart(intervalTime) // start autoscroll again
             }
         }
     }

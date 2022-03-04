@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/id_drawer"
+    android:id="@+id/id_constraint_drawer_drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,7 +8,7 @@
     android:background="@color/white">
 
     <LinearLayout
-        android:id="@+id/id_btns_drawer"
+        android:id="@+id/id_linear_btns_drawer"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,7 +17,7 @@
         app:layout_constraintHeight_percent="0.05">
 
         <ImageButton
-            android:id="@+id/id_btn_notifications"
+            android:id="@+id/id_btn_notifications_drawer"
             android:src="@drawable/ic_notification"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -26,7 +26,7 @@
             android:layout_marginStart="16dp"/>
 
         <ImageButton
-            android:id="@+id/id_btn_settings"
+            android:id="@+id/id_btn_settings_drawer"
             android:src="@drawable/ic_settings"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -35,7 +35,7 @@
             android:layout_marginStart="16dp"/>
 
         <ImageButton
-            android:id="@+id/id_btn_drawer_close"
+            android:id="@+id/id_btn_close_drawer"
             android:src="@drawable/ic_close"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -46,32 +46,32 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/id_txt_nametitle_main"
+        android:id="@+id/id_txt_nametitle_drawer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="깐부 님(RED)"
         style="@style/TextAppearance.CafeAppProject.Headline3"
-        app:layout_constraintTop_toBottomOf="@id/id_btns_drawer"
+        app:layout_constraintTop_toBottomOf="@id/id_linear_btns_drawer"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"/>
 
     <TextView
-        android:id="@+id/id_txt_memberdesc0_main"
+        android:id="@+id/id_txt_memberdesc0_drawer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="특별한 RED멤버입니다."
         style="@style/TextAppearance.CafeAppProject.Body1"
-        app:layout_constraintTop_toBottomOf="@id/id_txt_nametitle_main"
+        app:layout_constraintTop_toBottomOf="@id/id_txt_nametitle_drawer"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="32dp"/>
 
     <TextView
-        android:id="@+id/id_txt_memberdesc1_main"
+        android:id="@+id/id_txt_memberdesc1_drawer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="레드만의 특별한 혜택을 즐겨보세요."
         style="@style/TextAppearance.CafeAppProject.Body1"
-        app:layout_constraintTop_toBottomOf="@id/id_txt_memberdesc0_main"
+        app:layout_constraintTop_toBottomOf="@id/id_txt_memberdesc0_drawer"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"/>
 
@@ -79,7 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/id_txt_memberdesc1_main"
+        app:layout_constraintTop_toBottomOf="@id/id_txt_memberdesc1_drawer"
         app:layout_constraintDimensionRatio="1.6:1"
         android:layout_marginTop="32dp"
         app:cardCornerRadius="20dp">
@@ -124,7 +124,6 @@
                         android:text="구매하기" />
 
                 </LinearLayout>
-
 
             </LinearLayout>
 
