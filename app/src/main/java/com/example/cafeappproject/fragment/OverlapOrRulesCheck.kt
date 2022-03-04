@@ -10,16 +10,18 @@ import com.example.cafeappproject.databinding.FragmentSignUpBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class OverlapOrRulesCheck() : SignupFinalCheck() {
+class OverlapOrRulesCheck() : SaveSignUpData() {
     val mDatabase = Firebase.firestore
 
     fun OverlapCallback(text: String?, type: String?, callback: ((Boolean) -> Unit)) {
         var isOverlap = false
+
+        // 중복 값 판별
         mDatabase.collection("member")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    if (document.data.getValue(type).equals(text))  // 중복 값 판별
+                    if (document.data.getValue(type).equals(text))
                         isOverlap = true
                 }
                 callback.invoke(isOverlap)
@@ -95,6 +97,7 @@ class OverlapOrRulesCheck() : SignupFinalCheck() {
             textBelow.text = context.getString(R.string.correct_input)
     }
 
+    // 동일한 Password 입력 확인
     fun ReconfirmPassword(
         context: Context,
         passwordText: TextView,

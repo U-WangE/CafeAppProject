@@ -1,6 +1,6 @@
 package com.example.cafeappproject.fragment
 
-open class SignupFinalCheck {
+open class SaveSignUpData {
     private var email : String? = null
     private var nicknameCheck : Boolean? = false
     private var nickname : String? = null

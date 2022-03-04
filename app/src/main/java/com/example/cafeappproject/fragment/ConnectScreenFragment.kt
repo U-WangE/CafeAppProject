@@ -24,23 +24,25 @@ class ConnectScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding = FragmentConnectScreenBinding.inflate(inflater, container, false)
 
+        // 화면 클릭 Event
         binding.idTxtClick.setOnClickListener { view ->
             if (activity?.let { it -> MySharedPreferences.getAutoLogin(it) }!!) {  // autoLogin 가능 여부 확인
-                if (!activity?.let { it -> MySharedPreferences.getUserEmail(it) }
+                if (!activity?.let { it -> MySharedPreferences.getUserEmail(it) }  // MySharedPreference 내에 회원 정보 유무
                         .isNullOrBlank() && !activity?.let { it ->
-                        MySharedPreferences.getUserPassword(it)
-                    }
-                        .isNullOrBlank()) {
+                        MySharedPreferences.getUserPassword(
+                            it
+                        )
+                    }.isNullOrBlank()) {
                     Toast.makeText(activity, R.string.Login, Toast.LENGTH_SHORT).show()
 
-                    view.findNavController()
+                    view.findNavController()  // autoLogin success | ConnectScreenFragment -> MainFragment 화면 이동
                         .navigate(R.id.action_connectScreenFragment_to_mainFragment)
 
-                } else {
+                } else {  // autoLogin fail | ConnectScreenFragment -> LoginFragment 화면 이동
                     view.findNavController()
                         .navigate(R.id.action_connectScreenFragment_to_loginFragment)
                 }
-            } else {
+            } else {  // autoLogin false | ConnectScreenFragment -> LoginFragment 화면 이동
                 view.findNavController()
                     .navigate(R.id.action_connectScreenFragment_to_loginFragment)
             }
@@ -49,9 +51,9 @@ class ConnectScreenFragment : Fragment() {
         return binding.root
     }
 
-    // 프래그먼트가 destroy (파괴) 될때..
+
     override fun onDestroyView() {
-        // onDestroyView 에서 binding class 인스턴스 참조를 정리해주어야 한다.
+        // onDestroyView 에서 binding class 인스턴스 참조를 정리.
         mBinding = null
         super.onDestroyView()
     }

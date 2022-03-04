@@ -29,10 +29,6 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding = FragmentLoginBinding.inflate(inflater, container, false)
 
-        // Navigation 화면 전환
-        // Login -> Main 화면 전환
-        // 화면 전환시 회원인지 파악 필요
-
         // 로그인 버튼 클릭
         binding.idBtnLogin.setOnClickListener { view ->
             Login(
@@ -68,9 +64,9 @@ class LoginFragment : Fragment() {
                             binding.idCheckboxAutologin.isChecked
                         )
                     }
-
                     Toast.makeText(activity, R.string.Login, Toast.LENGTH_SHORT).show()
-                    view.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+                    view.findNavController()
+                        .navigate(R.id.action_loginFragment_to_mainFragment)  // MainFragment로 이동
                 } else {
                     // 회원 정보 없을 시 Toast Message
                     binding.idTxtLoginEmail.setText(null)
@@ -80,17 +76,15 @@ class LoginFragment : Fragment() {
             }
         }
 
-
-        // Login -> Signup 화면 전환
+        // SignUp button click -> SingUpFragment로 이동
         binding.idBtnSignup.setOnClickListener {
             it.findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
         }
 
-
-
         return binding.root
     }
 
+    // Login
     fun Login(
         email: String?,
         password: String?,
@@ -102,6 +96,7 @@ class LoginFragment : Fragment() {
         var storedPassword = false
         var isMember = false
 
+        // Database의 회원 정보 일치 확인
         mDatabase.collection("member")
             .get()
             .addOnSuccessListener { it ->
@@ -129,9 +124,8 @@ class LoginFragment : Fragment() {
     }
 
 
-    // 프래그먼트가 destroy (파괴) 될때..
     override fun onDestroyView() {
-        // onDestroyView 에서 binding class 인스턴스 참조를 정리해주어야 한다.
+        // onDestroyView 에서 binding class 인스턴스 참조를 정리.
         mBinding = null
         super.onDestroyView()
     }
