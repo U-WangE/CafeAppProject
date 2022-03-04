@@ -63,6 +63,7 @@ class SettingFragment : Fragment() {
         return binding.root
     }
 
+    // Database내의 해당 member의 autologin 변경
     fun ChangeAutoLogin(isCheck: Boolean, callback: (Boolean) -> Unit) {
         val mDatabase = Firebase.firestore
 
@@ -76,7 +77,7 @@ class SettingFragment : Fragment() {
                                     context
                                 )
                             })
-                    ) {
+                    ) {  // autologin update
                         mDatabase.collection("member").document(document.id).update("autologin", isCheck)
                         callback.invoke(true)
                     }

@@ -26,7 +26,7 @@ class SignUpFragment : Fragment() {
 
         val overlapOrRulesCheck = OverlapOrRulesCheck()
 
-        // NicknameCheck
+        // NicknameCheck Button 클릭
         binding.idBtnSignupNicknamecheck.setOnClickListener {
             context?.let { it ->
                 overlapOrRulesCheck.NicknameRulesCheck(
@@ -37,7 +37,7 @@ class SignUpFragment : Fragment() {
             }
         }
 
-        // EmailCheck
+        // Email Overlap Check
         binding.idTxtSignupEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
@@ -53,7 +53,7 @@ class SignUpFragment : Fragment() {
             }
         })
 
-        // Password
+        // Password Rule Check
         binding.idTxtSignupPassword.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
@@ -69,7 +69,7 @@ class SignUpFragment : Fragment() {
             }
         })
 
-        // Reconfirm Password
+        // Reconfirm Password Same Check
         binding.idTxtSignupReconfirmpassword.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
@@ -88,7 +88,7 @@ class SignUpFragment : Fragment() {
 
         // 회원가입 버튼 클릭
         binding.idBtnSignup.setOnClickListener { it ->
-            if(overlapOrRulesCheck.CheckAllInput(binding))
+            if(overlapOrRulesCheck.CheckAllInput(binding))  // 회원가입 성공 | SignUpFragment -> LoginFragment 화면 이동
                 it.findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
             else
                 Toast.makeText(activity, R.string.some_input_errors, Toast.LENGTH_SHORT).show()
