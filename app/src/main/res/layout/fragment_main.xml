@@ -1,102 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_drawerLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.MainFragment">
 
-    <ImageButton
-        android:id="@+id/buttonProfile"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:adjustViewBounds="true"
-        android:background="@color/white"
-        android:contentDescription="@string/profile"
-        android:cropToPadding="false"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/user"
-        app:layout_constraintEnd_toStartOf="@+id/buttonSetting"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.MainFragment">
 
-    <ImageButton
-        android:id="@+id/buttonMenu"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="300dp"
-        android:adjustViewBounds="true"
-        android:background="@color/white"
-        android:contentDescription="menu"
-        android:cropToPadding="false"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/board"
-        app:layout_constraintBottom_toTopOf="@+id/textViewMenu"
-        app:layout_constraintEnd_toStartOf="@+id/buttonMembership"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:id="@+id/id_toolbar_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintHeight_percent="0.10"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <ImageButton
-        android:id="@+id/buttonMembership"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="300dp"
-        android:adjustViewBounds="true"
-        android:background="@color/white"
-        android:contentDescription="membership"
-        android:cropToPadding="false"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/membership"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonMenu"
-        app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                android:src="@drawable/pk_coffee_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/buttonSetting"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:adjustViewBounds="true"
-        android:background="@color/white"
-        android:contentDescription="@string/setting"
-        android:cropToPadding="false"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/setting"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Menu"
-        app:layout_constraintTop_toBottomOf="@+id/buttonMenu"
-        tools:layout_editor_absoluteX="117dp" />
+        <ImageButton
+            android:id="@+id/id_btn_drawer_open"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_toolbar_menu"
+            app:layout_constraintBottom_toBottomOf="@id/id_toolbar_main"
+            app:layout_constraintDimensionRatio="1.1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintHorizontal_bias="0.97"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/id_toolbar_main" />
 
-    <ImageButton
-        android:id="@+id/buttonNotice"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:adjustViewBounds="true"
-        android:background="@color/white"
-        android:contentDescription="@string/notice"
-        android:cropToPadding="false"
-        android:padding="2dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/notification_bell"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/id_imageslider_main"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardBackgroundColor="@color/gray"
+            app:cardCornerRadius="6dp"
+            app:layout_constraintDimensionRatio="1.5:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/id_toolbar_main"
+            app:layout_constraintBottom_toTopOf="@id/id_grid_main"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+            android:id="@+id/id_indicator_main"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            app:dotsColor="@color/gray"
+            app:selectedDotColor="@color/design_default_color_secondary"
+            app:dotsWidthFactor="1"
+            app:progressMode="false"
+            app:layout_constraintHeight_percent="0.015"
+            app:layout_constraintStart_toStartOf="@id/id_imageslider_main"
+            app:layout_constraintEnd_toEndOf="@id/id_imageslider_main"
+            app:layout_constraintTop_toBottomOf="@id/id_imageslider_main"/>
+
+        <GridLayout
+            android:id="@+id/id_grid_main"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:columnCount="3"
+            android:orientation="horizontal"
+            android:padding="32dp"
+            android:rowCount="100"
+            app:layout_constraintDimensionRatio="1.2:1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.40"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/id_imageslider_main">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/id_btn_main_membership"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.8"
+
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_membership" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PK멤버쉽" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/id_btn_main_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.8"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_menu" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="메뉴" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/id_btn_main_coupon"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.8"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_coupon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="쿠폰" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/id_btn_main_store"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.8"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_store" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="매장" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/id_btn_main_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.8"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_event" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이벤트" />
+
+            </LinearLayout>
+
+        </GridLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        layout="@layout/fragment_main_drawer"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_gravity="right"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

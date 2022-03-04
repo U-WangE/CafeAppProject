@@ -62,7 +62,7 @@
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/id_subtxt_signup_email"
+            android:id="@+id/id_belowtxt_signup_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-5dp"
@@ -81,7 +81,7 @@
             android:textColor="@color/black"/>
 
         <TextView
-            android:id="@+id/id_subtxt_signup_password"
+            android:id="@+id/id_belowtxt_signup_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-5dp"
@@ -101,7 +101,7 @@
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/id_subtxt_signup_reconfirmpassword"
+            android:id="@+id/id_belowtxt_signup_reconfirmpassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-5dp"
