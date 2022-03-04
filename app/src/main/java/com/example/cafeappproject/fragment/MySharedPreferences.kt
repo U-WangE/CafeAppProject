@@ -7,6 +7,14 @@ import com.example.cafeappproject.R
 object MySharedPreferences {
     private val myAccount : String = "account"
 
+    fun clearUser(context: Context) {
+        val prefs : SharedPreferences = context?.getSharedPreferences(myAccount, Context.MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = prefs.edit()
+
+        editor.clear()
+        editor.commit()
+    }
+
     fun setUserEmail(context: Context, input: String) {
         val prefs : SharedPreferences = context?.getSharedPreferences(myAccount, Context.MODE_PRIVATE)
         val editor : SharedPreferences.Editor = prefs.edit()
@@ -33,11 +41,16 @@ object MySharedPreferences {
         return prefs.getString("myPassword", "").toString()
     }
 
-    fun clearUser(context: Context) {
-        val prefs : SharedPreferences = context?.getSharedPreferences(myAccount, Context.MODE_PRIVATE)
+    fun setAutoLogin(context: Context, input: Boolean) {
+        var prefs : SharedPreferences = context?.getSharedPreferences(myAccount, Context.MODE_PRIVATE)
         val editor : SharedPreferences.Editor = prefs.edit()
-
-        editor.clear()
+        editor.putBoolean("myAutoLogin", input)
         editor.commit()
+    }
+
+    fun getAutoLogin(context: Context) : Boolean{
+        var prefs : SharedPreferences = context?.getSharedPreferences(myAccount, Context.MODE_PRIVATE)
+
+        return prefs.getBoolean("myAutoLogin", true)
     }
 }

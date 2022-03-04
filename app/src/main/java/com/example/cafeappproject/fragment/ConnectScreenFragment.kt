@@ -24,19 +24,27 @@ class ConnectScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding = FragmentConnectScreenBinding.inflate(inflater, container, false)
 
-//        activity?.let { it -> MySharedPreferences.clearUser(it) }
-
         binding.idTxtClick.setOnClickListener { view ->
-            if(!activity?.let { it -> MySharedPreferences.getUserEmail(it) }
-                    .isNullOrBlank() && !activity?.let { it -> MySharedPreferences.getUserPassword(it) }
-                    .isNullOrBlank()) {
-                Toast.makeText(activity, R.string.Login, Toast.LENGTH_SHORT).show()
-                view.findNavController().navigate(R.id.action_connectScreenFragment_to_mainFragment)
+            if (activity?.let { it -> MySharedPreferences.getAutoLogin(it) }!!) {  // autoLogin 가능 여부 확인
+                if (!activity?.let { it -> MySharedPreferences.getUserEmail(it) }
+                        .isNullOrBlank() && !activity?.let { it ->
+                        MySharedPreferences.getUserPassword(it)
+                    }
+                        .isNullOrBlank()) {
+                    Toast.makeText(activity, R.string.Login, Toast.LENGTH_SHORT).show()
+
+                    view.findNavController()
+                        .navigate(R.id.action_connectScreenFragment_to_mainFragment)
+
+                } else {
+                    view.findNavController()
+                        .navigate(R.id.action_connectScreenFragment_to_loginFragment)
+                }
             } else {
-                view.findNavController().navigate(R.id.action_connectScreenFragment_to_loginFragment)
+                view.findNavController()
+                    .navigate(R.id.action_connectScreenFragment_to_loginFragment)
             }
         }
-
 
         return binding.root
     }

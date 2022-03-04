@@ -13,8 +13,8 @@
     </style>
     <style name="TextAppearance.CafeAppProject.Headline4"
         parent="TextAppearance.MaterialComponents.Headline4">
-    </style>
 
+    </style>
     <!-- Text Body-->
     <style name="TextAppearance.CafeAppProject.Body1"
         parent="TextAppearance.MaterialComponents.Body1">
@@ -22,5 +22,23 @@
     <style name="TextAppearance.CafeAppProject.Body2"
         parent="TextAppearance.MaterialComponents.Body2">
     </style>
+
+
+    <!-- Fragment_Setting -->
+    <style name="style_setting_title">
+        <item name="android:paddingTop">10sp</item>
+        <item name="android:paddingBottom">10sp</item>
+        <item name="android:paddingLeft">20sp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:background">@color/lightgray</item>
+    </style>
+
+    <style name="style_setting_contents">
+        <item name="android:paddingTop">10sp</item>
+        <item name="android:paddingBottom">10sp</item>
+        <item name="android:paddingLeft">20sp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
 
 </resources>
