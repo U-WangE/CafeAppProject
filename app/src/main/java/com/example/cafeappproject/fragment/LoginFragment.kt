@@ -1,6 +1,7 @@
 package com.example.cafeappproject.fragment
 
 import  android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -36,23 +37,38 @@ class LoginFragment : Fragment() {
         binding.idBtnLogin.setOnClickListener { view ->
             Login(
                 binding.idTxtLoginEmail.text.toString(),
-                binding.idTxtLoginPassword.text.toString()
+                binding.idTxtLoginPassword.text.toString(),
+                binding.idCheckboxAutologin.isChecked
             ) {
                 if (it) {
+
+                    // MySharedPreferences 기존 정보 초기화
                     activity?.let { it -> MySharedPreferences.clearUser(it) }
 
+                    // MySharedPreferences에 email 저장
                     activity?.let { it ->
                         MySharedPreferences.setUserEmail(
                             it,
                             binding.idTxtLoginEmail.text.toString()
                         )
                     }
+
+                    // MySharedPreferences에 password 저장
                     activity?.let { it ->
                         MySharedPreferences.setUserPassword(
                             it,
                             binding.idTxtLoginPassword.text.toString()
                         )
                     }
+
+                    // MySharedPreferences에 autoLogin 저장
+                    activity?.let { it ->
+                        MySharedPreferences.setAutoLogin(
+                            it,
+                            binding.idCheckboxAutologin.isChecked
+                        )
+                    }
+
                     Toast.makeText(activity, R.string.Login, Toast.LENGTH_SHORT).show()
                     view.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                 } else {
@@ -75,7 +91,12 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
-    fun Login(email: String?, password: String?, callback: ((Boolean) -> Unit)) {
+    fun Login(
+        email: String?,
+        password: String?,
+        autologin: Boolean?,
+        callback: ((Boolean) -> Unit)
+    ) {
         val mDatabase = Firebase.firestore
         var storedEmail = false
         var storedPassword = false
@@ -85,12 +106,19 @@ class LoginFragment : Fragment() {
             .get()
             .addOnSuccessListener { it ->
                 for (document in it) {
-                    if (document.data.getValue("email").equals(email))
-                        storedEmail = true
-                    if (document.data.getValue("password").equals(password))
-                        storedPassword = true
-                    if (storedEmail && storedPassword)
+                    if (document.data.getValue("email").equals(email)) storedEmail =
+                        true else storedEmail = false
+
+                    if (document.data.getValue("password").equals(password)) storedPassword =
+                        true else storedPassword = false
+
+                    if (storedEmail && storedPassword) {
                         isMember = true
+
+                        // autoCheck 여부 저장
+                        mDatabase.collection("member").document(document.id)
+                            .update("autologin", autologin)
+                    }
                 }
                 callback.invoke(isMember)
             }

@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+        <style name="style_setting_title">
+            <item name="android:paddingTop">10sp</item>
+            <item name="android:paddingBottom">10sp</item>
+            <item name="android:paddingLeft">20sp</item>
+            <item name="android:textSize">15sp</item>
+            <item name="android:background">@color/lightgray</item>
+        </style>
+
+        <style name="style_setting_contents">
+            <item name="android:paddingTop">10sp</item>
+            <item name="android:paddingBottom">10sp</item>
+            <item name="android:paddingLeft">20sp</item>
+            <item name="android:textSize">15sp</item>
+        </style>
 
 
 </resources>
