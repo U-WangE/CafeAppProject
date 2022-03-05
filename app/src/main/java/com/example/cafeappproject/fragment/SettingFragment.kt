@@ -26,6 +26,7 @@ class SettingFragment : Fragment() {
         mBinding = FragmentSettingBinding.inflate(inflater, container, false)
 
         // setting fragment 실행시 사용자의 설정 불러오기
+        // autologin 사용 여부
         binding.idSwitchSettingAutologin.isChecked =
             activity?.let { it -> MySharedPreferences.getAutoLogin(it) }!!
 

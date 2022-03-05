@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.SettingFragment">
 
     <ImageButton
@@ -22,10 +22,10 @@
         android:textSize="25sp"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/id_txt_setting_scrollbar"/>
+        app:layout_constraintBottom_toTopOf="@id/id_scroll_setting_scrollbar"/>
 
     <ScrollView
-        android:id="@+id/id_txt_setting_scrollbar"
+        android:id="@+id/id_scroll_setting_scrollbar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintHeight_percent="0.93"
