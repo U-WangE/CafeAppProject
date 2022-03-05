@@ -30,12 +30,15 @@ class SettingFragment : Fragment() {
         binding.idSwitchSettingAutologin.isChecked =
             activity?.let { it -> MySharedPreferences.getAutoLogin(it) }!!
 
+        // 뒤로가기 버튼
+        binding.idBtnSettingBackspace.setOnClickListener { it ->
+            it.findNavController().navigate(R.id.action_settingFragment_to_mainFragment)
+        }
 
         // 로그아웃
         binding.idBtnSettingLogout.setOnClickListener { it ->
             it.findNavController().navigate(R.id.action_settingFragment_to_loginFragment)
         }
-
 
         // autologin change
         binding.idSwitchSettingAutologin.setOnCheckedChangeListener { buttonView, isChecked ->

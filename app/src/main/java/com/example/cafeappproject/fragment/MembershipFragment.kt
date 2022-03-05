@@ -17,3 +17,4 @@ class MembershipFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_membership, container, false)
     }
 }
+
