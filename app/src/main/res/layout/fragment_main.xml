@@ -70,7 +70,7 @@
             app:layout_constraintHeight_percent="0.015"
             app:layout_constraintStart_toStartOf="@id/id_vp2_main_imageslider"
             app:layout_constraintEnd_toEndOf="@id/id_vp2_main_imageslider"
-            app:layout_constraintTop_toBottomOf="@id/id_vp2_main_imageslider"/>
+            app:layout_constraintTop_toBottomOf="@id/id_vp2_main_imageslider" />
 
         <GridLayout
             android:id="@+id/id_grid_menus_main"
