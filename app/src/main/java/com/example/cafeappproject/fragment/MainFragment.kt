@@ -15,7 +15,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.cafeappproject.R
-import com.example.cafeappproject.databinding.FragmentLoginBinding
 import com.example.cafeappproject.databinding.FragmentMainBinding
 import com.example.cafeappproject.databinding.FragmentMainDrawerBinding
 import me.relex.circleindicator.CircleIndicator
@@ -24,60 +23,48 @@ class MainFragment : Fragment() {
 
     private var mBinding: FragmentMainBinding? = null
     private val binding get() = mBinding!!
-
-    private var mBindingDrawer: FragmentMainDrawerBinding? = null
-    private val bindingDrawer get() = mBindingDrawer!!
+    private val bindingDrawer get() = binding.idConstraintDrawerMain!!
 
     private val arrImg: ArrayList<Int> = ArrayList()    // Image Data for ImageSlider
     private val imgSliderHander = ImageSliderHandler()  // autoscroll handler for ImageSlider
     private var imgCurrentPosition = 0
-    private val intervalTime = 3000.toLong()    // for autoscroll, 1500ms = 1.5s
+    private val intervalTime = 3000.toLong()    // for autoscroll, 3000ms = 3s
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        getView()?.findViewById<ImageButton>(R.id.id_btn_membership_main)?.setOnClickListener {
+        mBinding = FragmentMainBinding.inflate(inflater, container, false)
+        binding.idBtnMembershipMain.setOnClickListener {
             it.findNavController().navigate(R.id.action_mainFragment_to_membershipFragment)
         }
-        getView()?.findViewById<ImageButton>(R.id.id_btn_menu_main)?.setOnClickListener {
+        binding.idBtnMenuMain.setOnClickListener {
             it.findNavController().navigate(R.id.action_mainFragment_to_menuFragment)
         }
-        getView()?.findViewById<ImageButton>(R.id.id_btn_notifications_drawer)?.setOnClickListener {
+        bindingDrawer.idBtnNotificationsDrawer.setOnClickListener {
             it.findNavController().navigate(R.id.action_mainFragment_to_noticeFragment)
         }
-        getView()?.findViewById<ImageButton>(R.id.id_btn_settings_drawer)?.setOnClickListener {
+        bindingDrawer.idBtnSettingsDrawer.setOnClickListener {
             it.findNavController().navigate(R.id.action_mainFragment_to_settingFragment)
         }
+
         /*
-
-
-
             Drawer
                 occupies along the display
-                디스플레이에서 차지하는 정도
                     at least: 0.8 of the system display width
-                    최소한 전체 디스플레이 가로의 0.8 비율
                     at most: 300dp
-                    최대 300dp
                 opened/closed by buttons
-                버튼에 의해 열기/닫기 가능
 
-
-
-         */
-
+            ViewPager2
+                automatically slides over (every 3s)
+                infinite loop
+                with indicator
+        */
 
         // Drawer: set width dynamically
         val sysWidth = resources.displayMetrics.widthPixels // get current display width
         val sysWidthDP = pxToDp(sysWidth)                   // get current display width as DP
-        val drawer = getView()?.findViewById<ConstraintLayout>(R.id.id_constraint_drawer_drawer)
+        val drawer = binding.idConstraintDrawerMain.idConstraintDrawerDrawer
         if (sysWidthDP != null) {
             if (sysWidthDP * 0.8 < 300) {
                 // make the drawer's width as 0.8 of total width
@@ -89,37 +76,22 @@ class MainFragment : Fragment() {
             }
         }
         // Drawer: menu btn clicked -> open drawer
-        val drawerLayout = getView()?.findViewById<DrawerLayout>(R.id.id_drawer_drawer_main)
-        val openDrawer = getView()?.findViewById<ImageButton>(R.id.id_btn_main_opendrawer)
+        val drawerLayout = binding.idDrawerDrawerMain
+        val openDrawer = binding.idBtnMainOpendrawer
         openDrawer?.setOnClickListener {
             if (!drawerLayout!!.isDrawerOpen(Gravity.RIGHT)) {
                 drawerLayout.openDrawer(Gravity.RIGHT)  // open drawer if not opened
             }
         }
         // Drawer: cancel btn clicked -> close drawer
-        val closeDrawer = getView()?.findViewById<ImageButton>(R.id.id_btn_close_drawer)
+        val closeDrawer = bindingDrawer.idBtnCloseDrawer
         closeDrawer?.setOnClickListener {
             if (drawerLayout!!.isDrawerOpen(Gravity.RIGHT)) {
                 drawerLayout.closeDrawer(Gravity.RIGHT) // close drawer if not closed
             }
         }
 
-        /*
-
-
-
-            ViewPager2
-                automatically slides over (every 3s)
-                자동 슬라이드 (3초마다)
-                infinite loop
-                무한 루프
-                with indicator
-                슬라이드 순서 표시
-
-
-
-         */
-        // store images for image slider
+        // ImageSlider: store images
         val arrImgData = arrayListOf<Int>(
             R.drawable.slider_coffee,
             R.drawable.slider_latte,
@@ -129,24 +101,25 @@ class MainFragment : Fragment() {
         arrImg.addAll(arrImgData)
         arrImg.add(arrImgData[0])
 
-        // connect adapter
+        // ImageSlider: connect adapter
         val adapter = MainSliderAdapter(arrImg)
-        val viewPager2 = getView()?.findViewById<ViewPager2>(R.id.id_vp2_main_imageslider)
+        val viewPager2 = binding.idVp2MainImageslider
         viewPager2?.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewPager2?.adapter = adapter
 
-        // Set indicator
-        val indicator = getView()?.findViewById<CircleIndicator>(R.id.id_lib_indicator_main)
+        // ImageSlider: set indicator
+        val indicator = binding.idLibIndicatorMain
         indicator?.createIndicators(arrImgData.size, 1)
         indicator?.animatePageSelected(0)
 
-        // auto scroll image slider
-        // infinite/endless page loop
+        // ImageSlider: auto scroll
+        // ImageSlider: infinite loop
         viewPager2?.setCurrentItem(imgCurrentPosition, false)
         viewPager2?.apply {
             registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
                 override fun onPageScrollStateChanged(state: Int) {
                     super.onPageScrollStateChanged(state)
+                    // infinite loop
                     if (state == ViewPager2.SCROLL_STATE_IDLE
                         || state == ViewPager2.SCROLL_STATE_DRAGGING) {
                         if (currentItem == 0) {
@@ -158,7 +131,8 @@ class MainFragment : Fragment() {
                             setCurrentItem(1, false)
                         }
                     }
-                    when (state) { // Apply Auto slide
+                    // auto scroll
+                    when (state) {
                         ViewPager2.SCROLL_STATE_IDLE -> autoScrollStart(intervalTime)
                         ViewPager2.SCROLL_STATE_DRAGGING -> autoScrollStop()
                     }
@@ -167,6 +141,8 @@ class MainFragment : Fragment() {
             })
             setCurrentItem(1, false)
         }
+
+        return binding.root
     }
 
     // calculator for drawer
@@ -209,5 +185,10 @@ class MainFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         autoScrollStop()    // stop auto scroll when away from MainFragment
+    }
+
+    override fun onDestroyView() {
+        mBinding = null
+        super.onDestroyView()
     }
 }

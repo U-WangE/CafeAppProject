@@ -215,6 +215,7 @@
 
     <include
         layout="@layout/fragment_main_drawer"
+        android:id="@+id/id_constraint_drawer_main"
         android:layout_height="match_parent"
         android:layout_width="0dp"
         android:layout_gravity="right"/>
