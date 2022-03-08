@@ -13,21 +13,22 @@ class ProfileFragment : Fragment() {
     private var mBinding: FragmentProfileBinding? = null
     private val binding get() = mBinding!!
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        mBinding = FragmentProfileBinding.inflate(inflater, container, false)
 
-
-        // 뒤로가기 버튼
         binding.idBtnProfileBackspace.setOnClickListener { it ->
-            it.findNavController().navigate(R.id.action_settingFragment_to_mainFragment)
+            it.findNavController().navigate(R.id.action_profileFragment_to_mainFragment)
         }
 
-
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        return binding.root
     }
 
+    override fun onDestroy() {
+        mBinding = null
+        super.onDestroy()
+    }
 }

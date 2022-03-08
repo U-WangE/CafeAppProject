@@ -6,6 +6,18 @@
     app:startDestination="@id/connectScreenFragment">
 
     <fragment
+        android:id="@+id/connectScreenFragment"
+        android:name="com.example.cafeappproject.fragment.ConnectScreenFragment"
+        android:label="fragment_connect_screen"
+        tools:layout="@layout/fragment_connect_screen" >
+        <action
+            android:id="@+id/action_connectScreenFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_connectScreenFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.cafeappproject.fragment.LoginFragment"
         android:label="fragment_login"
@@ -34,9 +46,6 @@
         <action
             android:id="@+id/action_mainFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -85,6 +94,9 @@
         <action
             android:id="@+id/action_settingFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -92,22 +104,8 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_profileFragment_to_membershipFragment"
-            app:destination="@id/membershipFragment" />
-        <action
             android:id="@+id/action_profileFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/connectScreenFragment"
-        android:name="com.example.cafeappproject.fragment.ConnectScreenFragment"
-        android:label="fragment_connect_screen"
-        tools:layout="@layout/fragment_connect_screen" >
-        <action
-            android:id="@+id/action_connectScreenFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_connectScreenFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-    </fragment>
+
 </navigation>

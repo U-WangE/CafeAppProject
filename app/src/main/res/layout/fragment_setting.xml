@@ -25,11 +25,11 @@
         app:layout_constraintBottom_toTopOf="@id/id_scroll_setting_scrollbar"/>
 
     <ScrollView
-        android:id="@+id/id_scroll_setting_scrollbar"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.93"
-        app:layout_constraintBottom_toBottomOf="parent">
+            android:id="@+id/id_scroll_setting_scrollbar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.93"
+            app:layout_constraintBottom_toBottomOf="parent">
 
         <GridLayout
             android:layout_width="match_parent"

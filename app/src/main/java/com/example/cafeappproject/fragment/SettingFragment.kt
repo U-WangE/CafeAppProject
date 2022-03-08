@@ -37,7 +37,8 @@ class SettingFragment : Fragment() {
 
         // 로그아웃
         binding.idBtnSettingLogout.setOnClickListener { it ->
-            it.findNavController().navigate(R.id.action_settingFragment_to_loginFragment)
+            it.findNavController().navigate(R.id.action_settingFragment_to_profileFragment)
+            //it.findNavController().navigate(R.id.action_settingFragment_to_loginFragment)
         }
 
         // autologin change
@@ -90,6 +91,13 @@ class SettingFragment : Fragment() {
             .addOnFailureListener { it ->
                 Log.e("AutoLogin Switch => ", "Error getting Change AutoLogin Setting", it)
             }
+    }
+
+
+    override fun onDestroyView() {
+        // onDestroyView 에서 binding class 인스턴스 참조를 정리.
+        mBinding = null
+        super.onDestroyView()
     }
 
 }
