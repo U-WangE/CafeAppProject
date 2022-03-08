@@ -13,8 +13,8 @@
     </style>
     <style name="TextAppearance.CafeAppProject.Headline4"
         parent="TextAppearance.MaterialComponents.Headline4">
-
     </style>
+
     <!-- Text Body-->
     <style name="TextAppearance.CafeAppProject.Body1"
         parent="TextAppearance.MaterialComponents.Body1">
@@ -22,7 +22,6 @@
     <style name="TextAppearance.CafeAppProject.Body2"
         parent="TextAppearance.MaterialComponents.Body2">
     </style>
-
 
     <!-- Fragment_Setting -->
     <style name="style_setting_title">

@@ -10,20 +10,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.cafeappproject.R
 import com.example.cafeappproject.databinding.FragmentMainBinding
-import com.example.cafeappproject.databinding.FragmentMainDrawerBinding
-import me.relex.circleindicator.CircleIndicator
 
 class MainFragment : Fragment() {
 
     private var mBinding: FragmentMainBinding? = null
     private val binding get() = mBinding!!
-    private val bindingDrawer get() = binding.idConstraintDrawerMain!!
+    private val bindingDrawer get() = binding.idConstraintMainDrawer!!
 
     private val arrImg: ArrayList<Int> = ArrayList()    // Image Data for ImageSlider
     private val imgSliderHander = ImageSliderHandler()  // autoscroll handler for ImageSlider
@@ -64,7 +60,7 @@ class MainFragment : Fragment() {
         // Drawer: set width dynamically
         val sysWidth = resources.displayMetrics.widthPixels // get current display width
         val sysWidthDP = pxToDp(sysWidth)                   // get current display width as DP
-        val drawer = binding.idConstraintDrawerMain.idConstraintDrawerDrawer
+        val drawer = binding.idConstraintMainDrawer.idConstraintDrawerDrawer
         if (sysWidthDP != null) {
             if (sysWidthDP * 0.8 < 300) {
                 // make the drawer's width as 0.8 of total width
@@ -76,7 +72,7 @@ class MainFragment : Fragment() {
             }
         }
         // Drawer: menu btn clicked -> open drawer
-        val drawerLayout = binding.idDrawerDrawerMain
+        val drawerLayout = binding.idDrawerMainDrawer
         val openDrawer = binding.idBtnMainOpendrawer
         openDrawer?.setOnClickListener {
             if (!drawerLayout!!.isDrawerOpen(Gravity.RIGHT)) {
