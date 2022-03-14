@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_profile_graph"
+    app:startDestination="@id/myCrownFragment">
+
+    <fragment
+        android:id="@+id/myCrownFragment"
+        android:name="com.example.cafeappproject.fragment.MyCrownFragment"
+        android:label="fragment_my_crown"
+        tools:layout="@layout/fragment_my_crown" />
+</navigation>

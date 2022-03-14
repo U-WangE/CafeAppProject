@@ -97,6 +97,9 @@
         <action
             android:id="@+id/action_settingFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_profileActivity"
+            app:destination="@id/profileActivity" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -107,5 +110,10 @@
             android:id="@+id/action_profileFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+    <activity
+        android:id="@+id/profileActivity"
+        android:name="com.example.cafeappproject.fragment.ProfileActivity"
+        android:label="activity_profile"
+        tools:layout="@layout/activity_profile" />
 
 </navigation>

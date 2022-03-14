@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="my_crown_spinner">
+    <string-array name="my_Profile_spinner">
         <item>My Crown</item>
         <item>Crown 이용내역</item>
         <item>멤버십 카드 관리</item>

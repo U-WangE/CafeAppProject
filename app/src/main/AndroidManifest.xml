@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CafeAppProject">
         <activity
-            android:name=".ProfileActivity"
+            android:name=".fragment.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".fragment.ProfileActivity"
+            android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

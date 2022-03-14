@@ -37,7 +37,7 @@ class SettingFragment : Fragment() {
 
         // 로그아웃
         binding.idBtnSettingLogout.setOnClickListener { it ->
-            it.findNavController().navigate(R.id.action_settingFragment_to_profileFragment)
+            it.findNavController().navigate(R.id.action_settingFragment_to_profileActivity)
             //it.findNavController().navigate(R.id.action_settingFragment_to_loginFragment)
         }
 
