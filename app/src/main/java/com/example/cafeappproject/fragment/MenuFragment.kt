@@ -20,8 +20,6 @@ class MenuFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding = FragmentMenuBinding.inflate(inflater, container, false)
 
-        val tb = binding.idToolbarMenuToolbar
-
         return binding.root
     }
 
