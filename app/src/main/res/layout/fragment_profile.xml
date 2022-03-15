@@ -28,9 +28,10 @@
 
     <Spinner
         android:id="@+id/id_spinner_profile_spinner"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
 
+        app:layout_constraintWidth_percent="0.8"
         app:layout_constraintHeight_percent="0.05"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -9,10 +9,10 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.example.cafeappproject.R
-import com.example.cafeappproject.databinding.ActivityProfileBinding
+import com.example.cafeappproject.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
-    private var mBinding: ActivityProfileBinding? = null
+    private var mBinding: FragmentProfileBinding? = null
     private val binding get() = mBinding!!
 
     override fun onCreateView(
@@ -20,8 +20,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-        mBinding = ActivityProfileBinding.inflate(layoutInflater)
+        mBinding = FragmentProfileBinding.inflate(layoutInflater)
 
         var spinner = binding.idSpinnerProfileSpinner
         spinner.adapter = activity?.let { it ->
@@ -71,5 +70,11 @@ class ProfileFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        // onDestroyView 에서 binding class 인스턴스 참조를 정리.
+        mBinding = null
+        super.onDestroyView()
     }
 }
