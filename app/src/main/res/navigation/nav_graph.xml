@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_mainFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -94,18 +97,7 @@
         <action
             android:id="@+id/action_settingFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_settingFragment_to_profileActivity"
-            app:destination="@id/profileActivity" />
-        <action
-            android:id="@+id/action_settingFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
     </fragment>
-    <activity
-        android:id="@+id/profileActivity"
-        android:name="com.example.cafeappproject.fragment.ProfileActivity"
-        android:label="activity_profile"
-        tools:layout="@layout/activity_profile" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.cafeappproject.fragment.ProfileFragment"

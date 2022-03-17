@@ -16,6 +16,21 @@ object MySharedPreferences {
         editor.commit()
     }
 
+    // Nickname 정보 저장
+    fun setUserNickname(context: Context, input: String) {
+        val prefs : SharedPreferences = context?.getSharedPreferences(myAccount, Context.MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = prefs.edit()
+        editor.putString("myNickname", input)
+        editor.commit()
+    }
+
+    // 저장된 Nickname 반환
+    fun getUserNickname(context: Context) : String {
+        var prefs : SharedPreferences = context?.getSharedPreferences(myAccount, Context.MODE_PRIVATE)
+
+        return prefs.getString("myNickname", "").toString()
+    }
+
     // Email 정보 저장
     fun setUserEmail(context: Context, input: String) {
         val prefs : SharedPreferences = context?.getSharedPreferences(myAccount, Context.MODE_PRIVATE)

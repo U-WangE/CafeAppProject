@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -86,6 +87,19 @@ class MainFragment : Fragment() {
                 drawerLayout.closeDrawer(Gravity.RIGHT) // close drawer if not closed
             }
         }
+
+        // Drawer: User nickname setting
+        var userNickname = bindingDrawer.idTxtNametitleDrawer
+
+        userNickname.text = activity?.let { it ->
+            MySharedPreferences.getUserNickname(it)
+        }
+
+        // Drawer: User nickname clicked -> open profileFragment
+        userNickname.setOnClickListener { it ->
+            it.findNavController().navigate(R.id.action_mainFragment_to_profileFragment)
+        }
+
 
         // ImageSlider: store images
         val arrImgData = arrayListOf<Int>(

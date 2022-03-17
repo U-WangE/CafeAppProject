@@ -20,6 +20,7 @@ class LoginFragment : Fragment() {
     // 매번 null 체크를 할 필요 없이 편의성을 위해 바인딩 변수 재 선언
     private val binding get() = mBinding!!
 
+    private var nickname : String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +41,13 @@ class LoginFragment : Fragment() {
 
                     // MySharedPreferences 기존 정보 초기화
                     activity?.let { it -> MySharedPreferences.clearUser(it) }
+
+                    // MySharedPreferences에 nickname 저장
+                    activity?.let { it ->
+                        MySharedPreferences.setUserNickname(
+                            it, nickname!!
+                        )
+                    }
 
                     // MySharedPreferences에 email 저장
                     activity?.let { it ->
@@ -97,7 +105,8 @@ class LoginFragment : Fragment() {
         var isMember = false
 
         // Database의 회원 정보 일치 확인
-        mDatabase.collection("member")
+        mDatabase
+            .collection("member")
             .get()
             .addOnSuccessListener { it ->
                 for (document in it) {
@@ -113,6 +122,8 @@ class LoginFragment : Fragment() {
                         // autoCheck 여부 저장
                         mDatabase.collection("member").document(document.id)
                             .update("autologin", autologin)
+
+                        nickname = document.data.getValue("nickname").toString()
                     }
                 }
                 callback.invoke(isMember)
