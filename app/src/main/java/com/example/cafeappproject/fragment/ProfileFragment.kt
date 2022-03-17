@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.navigation.findNavController
 import com.example.cafeappproject.R
 import com.example.cafeappproject.databinding.FragmentProfileBinding
 
@@ -22,6 +23,12 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding = FragmentProfileBinding.inflate(layoutInflater)
 
+        // 뒤로가기 버튼 -> main fragment로 이동
+        binding.idBtnProfileBackspace.setOnClickListener { it ->
+            it.findNavController().navigate(R.id.action_profileFragment_to_mainFragment)
+        }
+
+        // spinner
         var spinner = binding.idSpinnerProfileSpinner
         spinner.adapter = activity?.let { it ->
             ArrayAdapter.createFromResource(
